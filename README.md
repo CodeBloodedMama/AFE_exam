@@ -1,66 +1,64 @@
 # AFE-Eksamen
 
-## [Question 01 – Angular in general](./q01/README.md)
+## [Spørgsmål 01 – Angular generelt](./q01/README.md)
 
-- Explain the basic Angular concepts (components, directives, modules, services, pipes)
-- Explain how dependency injection is used in Angular
-- Explain how to component-to-component communication can be implemented
+- Forklar de grundlæggende Angular-koncepter (komponenter, direktiver, moduler, services, pipes)
+- Forklar hvordan dependency injection bruges i Angular
+- Forklar hvordan komponent-til-komponent kommunikation kan implementeres
 
-## [Question 02 – Reactive programming](./q02/README.md)
+## [Spørgsmål 02 – Reaktiv programmering](./q02/README.md)
 
-- Explain reactive programming using RxJS
-- Explain how network communication is done in Angular according to best practices (use of HttpClientModule)
+- Forklar reaktiv programmering ved hjælp af RxJS
+- Forklar hvordan netværkskommunikation udføres i Angular i henhold til bedste praksis (brug af HttpClientModule)
 
-## [Question 03 – Routing and SSR](./q03/README.md)
+## [Spørgsmål 03 – Routing og SSR](./q03/README.md)
 
-- Explain how routing works in Angular
-- Explain module routing and lazy-loading
-- Explain how to get route information in the navigated to component
-- Explain how to protect routes with guards
-- Explain why and how to use Server-Side Rendering (SSR)
+- Forklar hvordan routing fungerer i Angular
+- Forklar modul-routing og lazy-loading
+- Forklar hvordan man får ruteinformation i den navigerede komponent
+- Forklar hvordan man beskytter ruter med guards
+- Forklar hvorfor og hvordan man bruger Server-Side Rendering (SSR)
 
-## [Question 04 – Angular forms and testing](./q04/README.md)
+## [Spørgsmål 04 – Angular forms og testning](./q04/README.md)
 
-- Explain template-driven forms in Angular
-- Explain reactive forms in Angular
-- Discuss the pros and cons on the different approaches
-- Explain how to test Angular apps
+- Forklar template-drevne forms i Angular
+- Forklar reaktive forms i Angular
+- Diskuter fordele og ulemper ved de forskellige tilgange
+- Forklar hvordan man tester Angular apps
 
-## [Question 5 – Styling and third-party libraries](./q05/README.md)
+## [Spørgsmål 5 – Styling og tredjepartsbiblioteker](./q05/README.md)
 
-- Explain and discuss responsive web design (Flexbox, Grid and media queries)
-- Explain how third-party libraries can be used to develop web applications (examples: NgRx, Tailwind, and Angular Material)
+- Forklar og diskuter responsivt webdesign (Flexbox, Grid og medieforespørgsler)
+- Forklar hvordan tredjepartsbiblioteker kan bruges til at udvikle webapplikationer (eksempler: NgRx, Tailwind og Angular Material)
 
-## [Question 6 – Progressive Web Apps](./q06/README.md)
+## [Spørgsmål 6 – Progressive Web Apps](./q06/README.md)
 
-- Explain the concept Progressive Web Apps.
-- Show how to implement a Progressive Web App with Angular or React
-(the student is free to chose which framework to use for explanation and demonstration of how to build a PWA)
+- Forklar konceptet Progressive Web Apps.
+- Vis hvordan man implementerer en Progressive Web App med Angular eller React
+(studenten er fri til at vælge hvilket framework der skal bruges til forklaring og demonstration af hvordan man bygger en PWA)
 
-## [Question 7 - Next](./q07/README.md)
+## [Spørgsmål 7 - Next](./q07/README.md)
 
-- Give an overview of Next.js.
-- Explain the different types of components in Next, and how mix them.
-- Explain how to use the App router, and how it is different from the Pages router.
+- Giv et overblik over Next.js.
+- Forklar de forskellige typer af komponenter i Next, og hvordan man blander dem.
+- Forklar hvordan man bruger App router, og hvordan den adskiller sig fra Pages router.
 
-## [Question 8 - Search engine optimization](./q08/README.md)
+## [Spørgsmål 8 - Søgemaskineoptimering](./q08/README.md)
 
-- Explain what Search engine optimization is. Why and when it is important.
-- What affects SEO ranking?
-- What is Core Web Vitals? And why are they important?
-- Give an overview of Next.js and explain how to improve SEO in a Next Web app.
+- Forklar hvad søgemaskineoptimering er. Hvorfor og hvornår det er vigtigt.
+- Hvad påvirker SEO ranking?
+- Hvad er Core Web Vitals? Og hvorfor er de vigtige?
 
-## [Question 9 - GraphQL](./q09/README.md)
+## [Spørgsmål 9 - GraphQL](./q09/README.md)
 
-- Explain the principles of GraphQL.
-- Discuss pros and cons of REST vs GraphQL.
-- Show how to access a GraphQL Web API from React.
-- Show how to access a GraphQL Web API from Next, and explain why it is different from doing the same in React.
+- Forklar principperne for GraphQL.
+- Diskuter fordele og ulemper ved REST vs GraphQL.
+- Vis hvordan man tilgår en GraphQL Web API fra React.
+- Vis hvordan man tilgår en GraphQL Web API fra Next, og forklar hvorfor det er anderledes end at gøre det samme i React.
 
-## [Question 10 - Native web component](./q10/README.md)
+## [Spørgsmål 10 - Native web component](./q10/README.md)
 
-- Explain what a native web component is.
-- Which functionality is required by the browser?
-- Show how to build a native web component.
-- How can Lit help with building web components?
-- Discuss pros and cons of native web components.
+- Forklar hvad en native web component er.
+- Hvilken funktionalitet kræves af browseren?
+- Vis hvordan man bygger en native web component.
+- Hvordan kan Lit hjælpe med at bygge webkomponenter?

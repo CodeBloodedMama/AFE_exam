@@ -1,69 +1,85 @@
-# Question 10 - Native web component
+# Spørgsmål 10 - Native webkomponent
 
-**Questions:**
+## Spørgsmål
 
-- Explain what a native web component is.
-- Which functionality is required by the browser?
-- Show how to build a native web component.
-- How can Lit help with building web components?
-- Discuss pros and cons of native web components.
+- Forklar, hvad en nativ webkomponent er.
+- Hvilken funktionalitet kræver browseren?
+- Vis, hvordan man bygger en nativ webkomponent.
+- Hvordan kan Lit hjælpe med at bygge webkomponenter?
+- Diskuter fordele og ulemper ved native webkomponenter.
 
-## DELETE ME
+## Intro: Hvad er native webkomponent
+- Native webkomponenter er lowlevel, selvstændige, genanvendelige moduler, der bruger standard webteknologier. De arbejder på tværs af moderne browsere uden behov for eksterne biblioteker eller frameworks.
 
-useful when developing:
-`npm install http-server -g`
-`http-server -c-1` (to run the server without caching)
+- En webkomponent består af tre hoveddele: Custom Elements, Shadow DOM, og HTML Templates.
 
-## What is a native web component and how to build one
+- kan bruges i enhver webapplikation på tværs af frameworks (og uden frameworks). 
 
-A native web component is a component that can be used in any web application across frameworks (and without frameworks). It consists of a custom element, and can use the shadow DOM and HTML templates.
+### Brugerdefinerede elementer ( customElements)
 
-### Custom elements
+CustomElements er en måde at skabe dine egne HTML-tags på. 
+Vi kan oprette en ny klasse, der udvider HTMLElement, defineres ved hjælp af metoden `customElements.define()`. 
+Metoden tager to argumenter: navnet på elementet og klassen, der definerer og elementet i browseren.
+Metoder:
 
-Custom elements are a way to create your own HTML elements. They are defined using the `customElements.define()` method. The method takes two arguments: the name of the element and the class that defines the element.
-
-A custom component is built as a class that extends HTMLElement.
-
-Methods:
-
-- **Constructor** happens once, when the component is instantiated. Is not connected to the DOM. 
-- **ConnectedCallback** happens each time the custom element is appended into a document-connected element
+- **Constructor** sker én gang, når komponenten instantieres. Er ikke forbundet til DOM.
+- **ConnectedCallback** sker hver gang det brugerdefinerede element føjes til et dokument-forbundet element.
 
 ### [Shadow DOM](./src/component-with-template.js)
 
-Shadow DOM is a way to encapsulate the DOM and CSS of a component. It is defined using the `attachShadow()` method. The method takes one argument: the mode of the shadow DOM. The mode can be `open` or `closed`. If the mode is `open` the shadow DOM can be accessed from outside the component. If the mode is `closed` the shadow DOM can only be accessed from inside the component. The shadow DOM is rendered separately from the main DOM. This means that when a web component uses the shadow DOM the component does not collide with other elements on the page (name and styling).
+Shadow DOM er en måde at indkapsle DOM og CSS for en komponent. 
 
-### [HTML templates](./src/component-with-template.js)
+Det defineres ved hjælp af metoden `attachShadow()`. Metoden tager et argument: tilstanden af shadow DOM. 
+Tilstanden kan være `open` eller `closed`. Hvis tilstanden er `open`, kan shadow DOM tilgås udefra komponenten. 
+Hvis tilstanden er `closed`, kan shadow DOM kun tilgås inde fra komponenten. 
+Shadow DOM gengives separat fra hoved-DOM'en. 
+Dette betyder, at når en webkomponent bruger shadow DOM, kolliderer komponenten ikke med andre elementer på siden (navn og styling).
 
-HTML templates are a way to define HTML that is not rendered using the `<template>` tag. The `<slot>` tag can be used to make placeholders for content that is passed to the component.
+Det er smart fordi : 
+1. Encapsulation: Shadow DOM kapsler en komponent's interne struktur, så dens HTML, CSS og JavaScript ikke påvirker eller påvirkes af resten af dokumentet. Dette forhindrer stil- og navnekollisioner.
 
-## Required functionality
+2. Isolation: Det giver isolering af komponentens stil og opførsel, hvilket gør det lettere at udvikle og vedligeholde komplekse komponenter uden at bekymre sig om uforudsete sideeffekter.
 
-Beside the above three functionalities, only basic HTML and JavaScript is needed to create a native web component.
+3. Reusability: Komponenter med Shadow DOM kan genbruges på tværs af forskellige projekter uden at bekymre sig om stilkonflikter.
+
+4. Scoped Styles: CSS-stilarter defineret inden for en Shadow DOM påvirker kun elementerne inden for den pågældende Shadow DOM, hvilket gør det nemmere at styre og vedligeholde stilarter.
+
+5. Performance: Shadow DOM kan forbedre ydeevnen ved at reducere omfanget af stilberegninger og ommalinger, da ændringer inden for en Shadow DOM ikke nødvendigvis kræver omberegning af stilarter for hele dokumentet.
+
+### [HTML-templates](./src/component-with-template.js)
+
+HTML-skabeloner giver os en måde at definere markup på, som kan genbruges. Ved at bruge <template> og <slot> tags, kan vi oprette fleksible skabeloner, som kan have pladsholdere for brugerdefineret indhold.
+
+## demo: 
+Lad os nu se på en simpel demo, hvor jeg har bygget en lille webkomponent, der viser, hvordan vi kan bruge disse teknologier. Denne komponent viser dynamisk indhold baseret på brugerinput og anvender alle de tre teknologier, vi netop har diskuteret.
+
+## Påkrævet funktionalitet
+
+Udover de ovenstående tre funktionaliteter kræves kun grundlæggende HTML og JavaScript for at skabe en nativ webkomponent.
 
 ## Lit
 
-Lit is a simple library for building fast, lightweight web components. It uses lit-html to render into the element's Shadow DOM and adds API to help manage element properties and attributes. It still works in any framework. Properties are observed by default, and elements update asynchronously when their properties change.
-Lit removes the need to write the boilerplate code for web components.
+Lit er et simpelt bibliotek til at bygge hurtige, lette webkomponenter. Det anvender lit-html til at gengive i elementets Shadow DOM og tilføjer API til at håndtere elementegenskaber og attributter. Det fungerer stadig i ethvert framework. Egenskaberne observeres som standard, og elementer opdateres asynkront, når deres egenskaber ændres. Lit fjerner behovet for at skrive standardkode for webkomponenter.
 
 ```ts
-// Import LitElement base class, html helper function , and TypeScript decorators
-import { LitElement , html , customElement , property } from 'lit'
-// Use the customElement decorator to define your class as
-// a custom element and registers <my-element> as an HTML tag.
-@customElement ('my-element')
+// Importér LitElement baseklasse, html hjælpefunktion, og TypeScript dekorationer
+import { LitElement, html, customElement, property } from 'lit';
+// Brug customElement-dekoratøren til at definere din klasse som
+// et brugerdefineret element og registrerer <my-element> som en HTML-tag.
+@customElement('my-element')
 export class MyElement extends LitElement {
-  // Create an observed property. Triggers update on change.
+  // Opret en observeret egenskab. Udløser opdatering ved ændring.
   @property()
-  foo = 'This text originates from a property';
-  // Implement `render` to define a template for your element.
+  foo = 'Denne tekst stammer fra en egenskab';
+  // Implementér `render` for at definere en skabelon for dit element.
   render(){
-    return html`<p>A typescript demo: <em>${this.foo}</em></p>`;
+    return html`<p>En TypeScript demonstration: <em>${this.foo}</em></p>`;
   }
 }
+
 ```
 
-Templates can be made functionally:
+Templates til HTML filen oprettes funktionelt: 
 
 ```ts
 import { html , render } from 'lit html';
@@ -78,22 +94,24 @@ setTimeout(() => {
 }, 2000);
 ```
 
-## Pros and cons on web components
+## Fordele og ulemper ved webkomponenter
 
-### Pros
+### Fordele
 
-- Future proof
-- Backwards compatible
-- Builds on native browser functionality
-- Can be used across frameworks
-- Can be used without a framework
-- Fast
-- Reusable
+- Fremtidssikret: Webkomponenter er fremtidssikrede, da de bygger på standarder understøttet af alle moderne browsere.
+- Bagudkompatibel: De er hurtige og effektive, idet de kan bruges på tværs af forskellige frameworks eller uden et framework
+- Bygger på indfødte browserfunktionaliteter
+- Kan bruges på tværs af frameworks
+- Hurtig: Kan bruges uden et framework
+- Genanvendelig: De tilbyder en høj grad af genanvendelighed og vedligeholdelse
 
-### Cons
+### Ulemper
 
-- Not a very big community around it yet
-- Somewhat complex to build
-- Very manual and low level
-- Need to implement event-bus to handle events
-- No standard for server side rendering
+- Ikke et meget stort fællesskab omkring det endnu
+- Forholdsvis komplekst at bygge, fx states er svære
+- Meget manuelt og på lavt niveau
+- Nødvendigt at implementere event-bus for at håndtere begivenheder
+- Ingen standard for server-side rendering 
+
+## konklusion:
+Native webkomponenter tilbyder en kraftfuld model for webudvikling, der fremmer indkapsling, genanvendelighed, og vedligeholdelse. Med teknologier som Lit til at støtte udviklingsprocessen, er det mere tilgængeligt end nogensinde at implementere robuste, effektive webkomponenter

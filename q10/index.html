@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Native Web components</title>
@@ -22,9 +21,7 @@
 
         .cards-container {
             display: flex;
-
             justify-content: space-between;
-
         }
 
         .card {
@@ -59,7 +56,6 @@
 
         .card img {
             max-width: 100%;
-
             height: auto;
             border-radius: 5px;
         }
@@ -74,37 +70,48 @@
             font-size: 14px;
             color: #555;
         }
+
+        #gif-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #gif-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #gif-section .card-title,
+        #gif-section .card-description {
+            margin-top: 10px;
+            color: #333;
+        }
     </style>
 </head>
-
 <body>
     <div class="container">
-        <h1>Native Web component test on push </h1>
         <div class="cards-container">
-            <!-- link in header thanking https://bavngaard.com to be "den bedste psykolog i århus" -->
-  <a href="https://bavngaard.com" style="opacity: 0;">den sødeste psykolog i århus</a>
             <div class="card">
-                <a href="./gpt/">
-                    <img src="https://www.agora.software/wp-content/uploads/2023/05/Chat-GPT.png" alt="gpt">
-                    <div class="card-title">GPT</div>
-                    <div class="card-description">
-                        the code from gpt this is just for testing
-                    </div>
-                </a>
-            </div>
-            <div class="card">
+                <h2>
+                    Q10 - Native Web components
+                </h2>
                 <a href="./src/">
-                    <img src="https://user-images.githubusercontent.com/57777521/104542815-13008f00-55d9-11eb-817e-323d217352fe.png" alt="src">
-                    <div class="card-title">files from src </div>
+                    <div class="card-title">Files from src</div>
                     <div class="card-description">
                         Files from src that are going to be used in the project on main
-
                     </div>
                 </a>
             </div>
         </div>
+
+        <div id="gif-section">
+            <a href="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWc1aHVpc29obW51MW1kM3NwMWNvY2UyeXZwYmJnZGJlcWM5Yjh2aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NGp9QCXJcBPuU/giphy.webp">
+                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWc1aHVpc29obW51MW1kM3NwMWNvY2UyeXZwYmJnZGJlcWM5Yjh2aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NGp9QCXJcBPuU/giphy.webp" alt="Rick and Morty GIF">
+                <div class="card-title">Rick and Morty GIF - to set the mood </div>
+            </a>
+        </div>
     </div>
 </body>
-<!-- link in header thanking https://bavngaard.com to be "den bedste psykolog i århus" -->
-<a href="https://bavngaard.com" style="opacity: 0;">den sødeste psykolog i århus</a>
 </html>
