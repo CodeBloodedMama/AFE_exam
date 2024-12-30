@@ -1,55 +1,41 @@
 <!DOCTYPE html>
-<html lang="da">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>AFE lab WebComponents 1</title>
-  <link rel="stylesheet" href="./styles.css">
-  <script type="module" src="./afe-photo-carousel.js"></script>
-  <script type="module" src="./component-with-template.js"></script>
-</head>
-<body>
-  <h1>Q10 - Web Components</h1>
-  <div class="container">
-    <section id="question-10">
-      <div class="box">
-        <h2>Spørgsmål 10 - Native web component</h2>
-        <p><strong>Forklar hvad en native web component er:</strong></p>
-        <p>En native web component er en brugerdefineret HTML-element, der er bygget ved hjælp af standard webteknologier som HTML, CSS og JavaScript. Disse komponenter kan genbruges på tværs af forskellige projekter og browsere uden behov for eksterne biblioteker.</p>
-      </div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="./afe-photo-carousel.js"></script>
+    <link rel="stylesheet" href="./afe-photo-carousel.css" />
+    <script src="./component-with-template.js"></script>
+    <title>AFE lab WebComponents 1</title>
+  </head>
+  <body>
+    <h1>Q10 - web components</h1>
+    <afe-photo-carousel
+      title="Future Vacation Photos"
+      author="Ben Farrell"
+      photos="./images/fBmIASF.jpg,./images/3zxD6rz.jpg,
+    ./images/nKBgeLOr.jpg,./images/yVjJZ1Yr.jpg"
+    >
+    </afe-photo-carousel>
 
-      <div class="box">
-        <p><strong>Hvilken funktionalitet kræves af browseren:</strong></p>
-        <p>For at understøtte native webkomponenter skal browseren understøtte følgende teknologier:</p>
-        <ul>
-          <li>Custom Elements: Tillader oprettelse af brugerdefinerede HTML-elementer.</li>
-          <li>Shadow DOM: Giver mulighed for at kapsle en komponents stil og struktur.</li>
-          <li>HTML Templates: Tillader oprettelse af genanvendelige HTML-skabeloner.</li>
-        </ul>
-      </div>
+    <component-with-template color="red">
+      <span slot="whatToPutInSlot">STUFF</span>
+    </component-with-template>
 
-      <div class="box">
-        <p><strong>Vis hvordan man bygger en native web component:</strong></p>
-        <p>Her er et eksempel på en foto-karussel komponent bygget som en native webkomponent:</p>
-        <div class="example">
-          <afe-photo-carousel
-            title="Future Vacation Photos"
-            author="Ben Farrell"
-            photos="./images/3zxD6rz.jpg,./images/3zxD6rz.jpg,./images/3zxD6rz.jpg"
-          ></afe-photo-carousel>
-        </div>
-      </div>
+    <component-with-template>
+      <span slot="whatToPutInSlot">OTHER STUFF</span>
+    </component-with-template>
+    <div class="box">
+      <h2>Forklaring af &lt;slot&gt; og &lt;template&gt;</h2>
+      <p><strong>Hvad er en &lt;slot&gt;:</strong></p>
+      <p>En &lt;slot&gt; er en plads i en webkomponents skabelon, hvor indhold kan indsættes fra det omgivende HTML-dokument. Dette gør det muligt at genbruge komponenter med forskelligt indhold.</p>
+      <p>Eksempel:</p>
+      <pre><code>&lt;component-with-template color="red"&gt;
+    &lt;span slot="whatToPutInSlot"&gt;STUFF&lt;/span&gt;
+  &lt;/component-with-template&gt;</code></pre>
+      <p>I ovenstående eksempel vil indholdet "STUFF" blive indsat i &lt;slot name="whatToPutInSlot"&gt; i komponentens skabelon.</p>
+    </div>
 
-      <div class="box">
-        <p><strong>Eksempel på brug af &lt;slot&gt; og &lt;template&gt;:</strong></p>
-        <div class="example">
-          <component-with-template color="blue">
-            <span slot="whatToPutInSlot">custom content</span>
-          </component-with-template>
-        </div>
-      </div>
-    </section>
-  </div>
-</body>
+  </body>
 </html>
