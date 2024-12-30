@@ -1,0 +1,31 @@
+<div [ngClass]="'component-wrapper'">
+
+  <h2>Counter</h2>
+  <p>Current count: {{ count }}</p>
+  
+  <div [ngClass]="'button-container'">
+    <button [ngClass]="{'googly-button':count < 5}" (click)="increment()">Increment</button>
+    <button [ngClass]="{'googly-button':count > -1}" (click)="decrement()">Decrement</button>
+    <button [ngClass]="'googly-button'" (click)="reset()">Reset Counter</button>
+  </div>
+
+  <button [ngClass]="'googly-button'" (click)="toggleNumberList()">Generate number list</button>
+
+  <div *ngIf="showNumberList">
+    <ul>
+      <li *ngFor="let number of numberArray">{{ number }}</li>
+    </ul>
+  </div>
+  
+  <button [ngClass]="'googly-button'" (click)="logCount(count)">Log current count</button>
+  
+  <ul>
+    <li *ngFor="let message of getLogs()">
+      Time: {{ message.date | date:'hh:mm:ss' }} | 
+      Count: <strong>{{message.message}}</strong>
+    </li>
+  </ul>
+
+  <app-display-count [count]="count"></app-display-count>
+</div>
+
