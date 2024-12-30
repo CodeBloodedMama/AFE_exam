@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 90vh;
+  width: 100%;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+mat-label {
+  font-size: 1.2rem;
+}
+
+mat-select {
+  font-size: 1.2rem;
+}
+
+mat-error {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+input[type="text"] {
+  font-size: 1.2rem;
+}
+
+button[type="submit"] {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}

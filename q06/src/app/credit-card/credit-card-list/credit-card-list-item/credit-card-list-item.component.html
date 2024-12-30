@@ -1,0 +1,12 @@
+<div class="credit-card-item" *ngIf="creditCard as creditCardData; else loading" >
+  <p><strong>Card Number:</strong> {{ creditCardData?.card_number }}</p>
+  <p><strong>Card Holder:</strong> {{ creditCardData?.cardholder_name }}</p>
+  <p><strong>Issuer:</strong> {{ creditCardData?.issuer }}</p>
+  <!--- button for opening card details-->
+  <button mat-raised-button color="primary" routerLink="/creditcard/details/{{ creditCardData?.card_number }}">View Details</button>
+
+</div>
+<!-- Display a loading message while the Observable is being resolved -->
+<ng-template #loading>
+  <p>Loading card info...</p>
+</ng-template>

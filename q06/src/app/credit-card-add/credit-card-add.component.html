@@ -1,0 +1,107 @@
+<h1>Add Card</h1>
+<form
+  [formGroup]="creditCardForm"
+  (ngSubmit)="onSubmit()"
+  class="credit-card-form"
+>
+  <mat-form-field class="full-width-input">
+    <mat-label>Card Number</mat-label>
+    <input
+      matInput
+      type="number"
+      formControlName="card_number"
+      #cardNumberInput
+    />
+    <mat-error *ngIf="creditCardForm.get('card_number')?.hasError('required')">
+      Card number is required.
+    </mat-error>
+    <mat-error *ngIf="creditCardForm.get('card_number')?.hasError('pattern')">
+      Card number can only contain digits.
+    </mat-error>
+    <mat-error
+      *ngIf="
+        creditCardForm.get('card_number')?.hasError('minLength') ||
+        creditCardForm.get('card_number')?.hasError('maxLength')
+      "
+    >
+      Card number should be between 7 to 16 digits.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width-input">
+    <mat-label>Card Holder Name</mat-label>
+    <input matInput formControlName="cardholder_name" />
+    <mat-error
+      *ngIf="creditCardForm.get('cardholder_name')?.hasError('required')"
+    >
+      Cardholder name is required.
+    </mat-error>
+    <mat-error
+      *ngIf="creditCardForm.get('cardholder_name')?.hasError('maxLength')"
+    >
+      Cardholder name can't exceed 100 characters.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width-input">
+    <mat-label>CSC Code</mat-label>
+    <input matInput type="number" formControlName="csc_code" />
+    <mat-error *ngIf="creditCardForm.get('csc_code')?.hasError('required')">
+      CSC code is required.
+    </mat-error>
+    <mat-error
+      *ngIf="
+        creditCardForm.get('csc_code')?.hasError('minLength') ||
+        creditCardForm.get('csc_code')?.hasError('maxLength')
+      "
+    >
+      CSC code should be exactly 3 digits.
+    </mat-error>
+  </mat-form-field>
+  <div>
+    <mat-form-field class="half-width-input">
+      <mat-label>Expiration Date Month</mat-label>
+      <input matInput type="number" formControlName="expiration_date_month" />
+      <mat-error
+        *ngIf="
+          creditCardForm.get('expiration_date_month')?.hasError('required')
+        "
+      >
+        Expiration month is required.
+      </mat-error>
+      <mat-error
+        *ngIf="
+          creditCardForm.get('expiration_date_month')?.hasError('min') ||
+          creditCardForm.get('expiration_date_month')?.hasError('max')
+        "
+      >
+        Month should be between 1 and 12.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="half-width-input">
+      <mat-label>Expiration Date Year</mat-label>
+      <input matInput type="number" formControlName="expiration_date_year" />
+      <mat-error
+        *ngIf="creditCardForm.get('expiration_date_year')?.hasError('required')"
+      >
+        Expiration year is required.
+      </mat-error>
+      <mat-error
+        *ngIf="
+          creditCardForm.get('expiration_date_year')?.hasError('minLength') ||
+          creditCardForm.get('expiration_date_year')?.hasError('maxLength')
+        "
+      >
+        Year should be exactly 4 digits.
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <!-- Issuer does not have validation yet, so no error message for now -->
+  <mat-form-field class="full-width-input">
+    <mat-label>Issuer</mat-label>
+    <input matInput formControlName="issuer" />
+  </mat-form-field>
+
+  <button class="glow-on-hover" type="submit" mat-raised-button color="primary">Submit</button>
+</form>

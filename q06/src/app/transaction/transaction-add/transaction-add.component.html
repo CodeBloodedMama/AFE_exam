@@ -1,0 +1,46 @@
+<div class="container">
+
+  <h1>Add Transaction</h1>
+
+  <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+    <!-- Select Credit Card  -->
+    <mat-form-field>
+      <mat-label>Credit Card</mat-label>
+      <mat-select formControlName="credit_card">
+        <mat-option *ngFor="let card of creditCards" [value]="card?.card_number">{{ card?.card_number }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="transactionForm.get('credit_card')!.hasError('required')">Credit Card is required!</mat-error>
+    </mat-form-field>
+
+    <!-- Amount  -->
+    <mat-form-field>
+      <mat-label>Amount</mat-label>
+      <input matInput type="text" formControlName="amount">
+      <mat-error *ngIf="transactionForm.get('amount')!.hasError('required')">Amount is required!</mat-error>
+      <mat-error *ngIf="transactionForm.get('amount')!.hasError('pattern')">Enter a valid amount!</mat-error>
+    </mat-form-field>
+
+    <!-- Currency  -->
+    <mat-form-field>
+      <mat-label>Currency</mat-label>
+      <input matInput formControlName="currency">
+      <mat-error *ngIf="transactionForm.get('currency')!.hasError('required')">Currency is required!</mat-error>
+    </mat-form-field>
+
+    <!-- Comment  -->
+    <mat-form-field>
+      <mat-label>Comment</mat-label>
+      <input matInput formControlName="comment">
+    </mat-form-field>
+
+    <!-- Date ass number-->
+    <mat-form-field>
+      <mat-label>Date</mat-label>
+      <input matInput type="text" formControlName="date">
+      <mat-error *ngIf="transactionForm.get('date')!.hasError('required')">date is required!</mat-error>
+      <mat-error *ngIf="transactionForm.get('date')!.hasError('pattern')">Enter a valid date!</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button type="submit" >Add Transaction</button>
+  </form>
+</div>

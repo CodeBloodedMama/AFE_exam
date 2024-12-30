@@ -1,0 +1,40 @@
+.theme-grid {
+  display: grid;
+  @media (max-width: 400px) {
+    grid-template:
+      "a"
+      "aa"
+      "b"
+      "bb";
+  }
+  grid-template:
+    "a aa"
+    "b bb";
+  grid-gap: 20px;
+}
+
+.theme-a {
+  background: #dca;
+  color: #731;
+  padding: 8px;
+}
+@media (prefers-color-scheme: dark) {
+  .theme-a.adaptive {
+    background: #753;
+    color: #dcb;
+    outline: 5px dashed #000;
+  }
+}
+
+.theme-b {
+  background: #447;
+  color: #bbd;
+  padding: 8px;
+}
+@media (prefers-color-scheme: light) {
+  .theme-b.adaptive {
+    background: #bcd;
+    color: #334;
+    outline: 5px dotted #000;
+  }
+}

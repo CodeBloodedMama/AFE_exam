@@ -1,0 +1,326 @@
+<h1 id="credit-card-management-system">Credit Card Management System</h1>
+<h2 id="swafe-2023-hand-in-1">SWAFE 2023 – Hand in 1</h2>
+<h2 id="introduction">Introduction</h2>
+<p>
+  We have been contacted by a new client who runs a consultant business. Each of
+  their consultants has a company credit card, and they want to keep track of
+  expenses for each credit card. They have drafted with a requirement
+  specification for a credit card management system.
+</p>
+<p>
+  The solution will provide the accounting department with an overview of use
+  for each credit card. Accountants can add new credit cards and remove them
+  when after they have expired or is lost. It will also be possible to check
+  transaction details for each credit card, as well as searching in transactions
+  across all registered cards.
+</p>
+<h1 id="requirement-specification">Requirement specification</h1>
+<h2 id="functional-requirements">Functional requirements</h2>
+<p><code>F0</code> Application skeleton</p>
+<ul>
+  <li>[x] <code>F0.1</code> Skeleton shall contain a navigation bar</li>
+  <li>
+    [x] <code>F0.1.1</code> Navigation bar shall contain links for navigation to
+    Add credit card screen
+  </li>
+  <li>
+    [x] <code>F0.1.2</code> Navigation bar shall contain a link for navigation
+    to Transactions screen
+  </li>
+  <li>
+    [x] <code>F0.1.3</code> Navigation bar shall contain a link for navigation
+    to Home screen
+  </li>
+</ul>
+<p><code>F1</code> Home screen</p>
+<ul>
+  <li>[x] <code>F1.1</code>: Screen shall contain a list of credit cards</li>
+</ul>
+<p><code>F2</code> Credit card list</p>
+<ul>
+  <li>
+    [x] <code>F2.1</code>: List shall contain an element for each credit card
+  </li>
+  <li>
+    [x] <code>F2.1.1</code>: List item shall contain properties
+    <code>card_number</code>, <code>cardholder_name</code>, <code>issuer</code>
+  </li>
+  <li>
+    [x] <code>F2.1.2</code>: Navigate to a credit card details screen when an
+    entry is clicked/pressed
+  </li>
+</ul>
+<p><code>F3</code> Credit card details screen</p>
+<ul>
+  <li>
+    [x] <code>F3.1</code> Screen shall contain elements displaying the following
+    credit card properties: <code>card_number</code>,
+    <code>cardholder_name</code>, <code>csc_code</code>,
+    <code>expiration_date_month</code>, <code>expiration_date_year</code>,
+    <code>issuer</code>
+  </li>
+  <li>
+    [x] <code>F3.2</code> Screen shall contain the option to remove the credit
+    card
+  </li>
+  <li>
+    [x] <code>F3.3</code> Screen shall contain a list of transactions for the
+    credit card
+  </li>
+</ul>
+<p><code>F4</code> Add credit card screen</p>
+<ul>
+  <li>
+    [x] <code>F4.1</code> Form that contains fields for
+    <code>card_number</code>, <code>cardholder_name</code>,
+    <code>csc_code</code>, <code>expiration_date_month</code>,
+    <code>expiration_date_year</code>, <code>issuer</code>
+  </li>
+  <li>
+    [x] <code>F4.1.1</code> Field <code>card_number</code> only accepts numbers
+    (integers)
+  </li>
+  <li>
+    [x] <code>F4.1.2</code> Field <code>card_number</code> length must be
+    <code>7-16</code> digits
+  </li>
+  <li>[x] <code>F4.1.3</code> Field <code>card_number</code> is required</li>
+  <li>
+    [x] <code>F4.2.1</code> Field <code>csc_code</code> only accepts numbers
+    (integers)
+  </li>
+  <li>
+    [x] <code>F4.2.2</code> Field <code>csc_code</code> length must be
+    <code>3</code> digits (integers)
+  </li>
+  <li>[x] <code>F4.2.4</code> Field <code>csc_code</code> is required</li>
+  <li>
+    [x] <code>F4.3.1</code> Field <code>cardholder_name</code> is required
+  </li>
+  <li>
+    [x] <code>F4.4.1</code> Field <code>expiration_date_month</code> must be in
+    range <code>1-12</code>
+  </li>
+  <li>
+    [x] <code>F4.4.2</code> Field <code>expiration_date_month</code> is required
+  </li>
+  <li>
+    [x] <code>F4.5.1</code> Field <code>expiration_date_year</code> is required
+  </li>
+</ul>
+<p><code>F5</code> Transactions screen</p>
+<ul>
+  <li>
+    [x] <code>F5.1</code> Screen shall show a list of all transactions
+    registered in the system
+  </li>
+  <li>
+    [x] <code>F5.1.2</code> Screen shall present the option to add a transaction
+    to the transaction list
+  </li>
+  <li>
+    [x] <code>F5.1.3</code> Screen shall present the option to filter
+    transactions
+  </li>
+  <li>
+    [x] <code>F5.1.4</code> Screen shall provide filtering based on
+    <code>card_number</code>
+  </li>
+</ul>
+<p><code>F6</code> Transactions list</p>
+<ul>
+  <li>
+    [x] <code>F6.1.1</code> Each transaction shall display properties
+    <code>credit_card</code>, <code>amount</code>, <code>currency</code>,
+    <code>comment</code>, <code>date</code>
+  </li>
+  <li>
+    [x] <code>F6.1.2</code> Field <code>credit_card</code> shall be selected
+    from a list of credit cards
+  </li>
+  <li>
+    [x] <code>F6.1.3</code> Field <code>amount</code> must be a
+    <code>number</code>
+  </li>
+  <li>[x] <code>F6.1.4</code> Field <code>amount</code> is required</li>
+  <li>[x] <code>F6.1.5</code> Field <code>currency</code> is required</li>
+  <li>[x] <code>F6.1.6</code> Field <code>date</code> is required</li>
+  <li>
+    [x] <code>F6.1.7</code> Each transaction shall present the option to remove
+    itself
+  </li>
+</ul>
+<h2 id="design-requirements">Design requirements</h2>
+<p>Futhermore, the solution must include the following:</p>
+<ul>
+  <li>
+    [x] The solution shall be implemented using the lastest major release of the
+    Angular development platform<sup
+      >(<a href="https://github.com/angular/angular/releases">GitHub</a>)</sup
+    >
+  </li>
+  <li>
+    [x] At least one module must be lazy-loaded<sup
+      >(<a href="https://angular.io/guide/lazy-loading-ngmodules">docs</a>)</sup
+    >
+  </li>
+  <li>
+    [x] The application must implement at least one custom pipe
+    <sup
+      >(<a
+        href="https://angular.io/guide/pipes#creating-pipes-for-custom-data-transformations"
+        >docs</a
+      >)</sup
+    >
+    <em>Hint: Obvious candidates could be expiration date</em>
+  </li>
+  <li>
+    [x] At least one module must contain a routing module<sup
+      >(<a href="https://angular.io/guide/lazy-loading-ngmodules">docs</a>)</sup
+    >
+  </li>
+  <li>
+    [x] At least one component must be standalone<sup
+      >(<a href="https://angular.io/guide/standalone-components">docs</a>)</sup
+    >
+  </li>
+  <li>
+    [x] The application must be seeded with data from the server found @
+    <code>hand-in/credit-card-server</code>
+  </li>
+</ul>
+<h1 id="credit-card-server-documentation">Credit card server documentation</h1>
+<p><strong>Installation</strong></p>
+<ol>
+  <li>
+    Run <code>npm install</code> in <code>hand-in/credit-card-server</code>
+  </li>
+  <li>Run <code>npm start</code> in <code>hand-in/credit-card-server</code></li>
+</ol>
+<p>
+  The server is running @
+  <a href="http://localhost:3000">http://localhost:3000</a>
+</p>
+<p><strong>Available endpoint</strong></p>
+<ul>
+  <li>[x] <code>GET /cards</code>—returns an array of credit cards</li>
+  <li>
+    [x] <code>GET /cards/:card_number</code>—returns credit card with
+    <code>card_number</code>
+  </li>
+  <li>[x] <code>POST /cards</code>—creates a credit card</li>
+  <li>[x] <code>DELETE /cards/:card_number</code>–deletes a credit card</li>
+  <li>[x] <code>GET /transactions</code>—returns an array of transactions</li>
+  <li>[x] <code>POST /transactions</code>—creates a transaction</li>
+  <li>
+    [x] <code>DELETE /transactions/:transaction_uid</code>–deletes a transaction
+  </li>
+</ul>
+<h1 id="internal-notes">Internal notes</h1>
+<p>
+  Our Senior Vice Principal Software Engineering Architect has chosen Angular to
+  be used as the frontend framework. They have defined a proposal for an initial
+  architecture.
+  <em
+    >Note: that some details is left out for the developer teams to decide. The
+    list is not complete</em
+  >
+</p>
+<p><strong>Angular Artifact Checklist</strong></p>
+<ul>
+  <li>
+    Modules
+    <ul>
+      <li>
+        [x] <code>AppModule</code>
+        <ul>
+          <li>[x] <code>HomeComponent</code></li>
+          <li>[x] <code>NavigationBarComponent</code></li>
+        </ul>
+      </li>
+      <li>
+        [x] <code>CreditCardModule</code>
+        <ul>
+          <li>[x] <code>CreditCardListComponent</code></li>
+        </ul>
+      </li>
+      <li>
+        [x] <code>TransactionModule</code>
+        <ul>
+          <li>[x] <code>TransactionOverviewComponent</code></li>
+          <li>[x] <code>TransactionAddComponent</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    Standalone components
+    <ul>
+      <li>[x] <code>TransactionListComponent</code></li>
+      <li>[x] <code>CreditCardAddComponent</code></li>
+    </ul>
+  </li>
+  <li>
+    Services
+    <ul>
+      <li>[x] <code>CreditCardService</code></li>
+      <li>[x] <code>TransactionService</code></li>
+    </ul>
+  </li>
+</ul>
+<h2 id="formalia">Formalia</h2>
+<ul>
+  <li>Group size: 1-4 people</li>
+  <li>Deadline: 16th October 2023 (2022-10-16)</li>
+</ul>
+<h2 id="submission">Submission</h2>
+<p>Before submitting your solution, do the following:</p>
+<ol>
+  <li>
+    Delete the <code>node_modules</code> folder in the workspace root folder
+  </li>
+  <li>
+    Add a file <code>participants.txt</code> and insert a new line for each
+    participant with the student number and name of each member separated by
+    whitespace
+  </li>
+  <li>
+    Add <code>participants.txt</code> to the root folder of your application
+  </li>
+  <li>
+    Archive and compress you application using one the following formats:
+    <code>zip</code>. All other formats (<code>rar</code>, <code>7z</code>,
+    etc.) will result in a request for resubmission
+  </li>
+  <li>
+    The filename should be named <code>Group&lt;no&gt;.zip</code>
+    <em>Example: <code>Group01.zip</code></em>
+  </li>
+  <li>And you are ready to upload it to Brightspace</li>
+</ol>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>StudentNumber</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Simon Hjortgaard Bos</td>
+      <td>201910459</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Mathias Schjødt-Bavngaard</td>
+      <td>201806662</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Oliver Vestergaard Schousboe</td>
+      <td>202008211</td>
+    </tr>
+  </tbody>
+</table>

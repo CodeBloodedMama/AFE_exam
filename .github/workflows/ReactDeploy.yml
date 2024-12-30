@@ -1,0 +1,157 @@
+name: 🧪 ⚛  React CI/CD Q09
+
+on:
+  push:
+    branches:
+      - main
+      - q09
+    paths:
+      - 'q09/reactgraphql/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'q09/reactgraphql/**'
+    types: [opened, synchronize, reopened]
+
+  workflow_dispatch:
+
+permissions:
+  pull-requests: write 
+  contents: write
+
+jobs:
+  build_deploy_main:
+    strategy:
+        fail-fast: false
+        matrix:
+          path: [q09/reactgraphql]
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/main')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Check if Directory Exsist
+        run: |
+          if [ -d ${{ matrix.path }} ]; then
+            echo "Directory Exists - ${{ matrix.path }} continuing"
+          else
+            echo "Directory - ${{ matrix.path }} -  Does Not Exist - Exiting with Success"
+            exit 0
+          fi
+
+      
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+            node-version: "18"
+  
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./${{ matrix.path }}
+  
+      - name: build to prod
+        run: npm run build
+        working-directory: ./${{ matrix.path }}
+          
+      # if push to main, then deploy to main folder
+      - name: deploy with james
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: Realease
+          folder: ${{ matrix.path }}/build
+          target-folder: ${{ matrix.path }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+  #if push to q09 then deploy to q09/branch folder     
+  deploy_on_push_q09:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        path: [q09/reactgraphql]
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/q09/reactgraphql')
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Check if Directory Exsist
+        run: |
+          if [ -d ${{ matrix.path }} ]; then
+            echo "Directory Exists - ${{ matrix.path }} continuing"
+          else
+            echo "Directory - ${{ matrix.path }} -  Does Not Exist - Exiting with Success"
+            exit 0
+          fi
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+            node-version: "18"
+  
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./${{ matrix.path }}
+  
+      - name: build to prod
+        run: npm run build
+        working-directory: ./${{ matrix.path }}
+
+      # if push to main, then deploy to main folder
+
+      - name: deploy with james
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: Realease
+          folder: ${{ matrix.path }}/build
+          target-folder:  temp/${{ matrix.path }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy_pr:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        path: [q09/reactgraphql]
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Check if Directory Exsist
+        run: |
+          if [ -d ${{ matrix.path }} ]; then
+            echo "Directory Exists - ${{ matrix.path }} continuing"
+          else
+            echo "Directory - ${{ matrix.path }} -  Does Not Exist - Exiting with Success"
+            exit 0
+          fi
+
+      # if push to main, then deploy to main folder
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+            node-version: "18"
+  
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./${{ matrix.path }}
+  
+      - name: build to prod
+        run: npm run build
+        working-directory: ./${{ matrix.path }}
+
+      - name: deploy with james
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: Realease
+          folder: ${{ matrix.path }}/build
+          target-folder: pr/${{ matrix.path }}/pr-${{ github.event.number }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          message: |
+            Deployed to https://ninjaneer127.github.io/AFE-Eksamen/pr/${{ matrix.path }}/pr-${{ github.event.number }} 

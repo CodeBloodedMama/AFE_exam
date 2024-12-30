@@ -1,0 +1,25 @@
+<!-- Check if credit card data is available -->
+<div *ngIf="creditCard$ | async as creditCardData; else loading">
+  <div class="container">
+    <div class="carddetails">
+      <h1>Credit Card Details</h1>
+      <p><strong>Card number:</strong> {{ creditCardData.card_number | creditCardFormat }}</p>
+      <p><strong>Card holder name:</strong> {{ creditCardData.cardholder_name }}</p>
+      <p><strong>Expiration date:</strong> {{ creditCardData.expiration_date_month | creditCardExpDateFormat:creditCardData.expiration_date_year }}</p>
+      <p><strong>Issuer:</strong> {{ creditCardData.issuer }}</p>
+      <details>
+        <summary>CSC code:</summary>
+        <p>{{ creditCardData.csc_code }}</p>
+      </details>
+    </div>
+    <div class="actions">
+      <button mat-raised-button color="warn" (click)="deleteCreditCard(creditCardData.card_number)">Delete</button>
+    </div>
+  </div>
+  <app-transaction-list [creditCardId]="creditCardData.card_number"></app-transaction-list>
+</div>
+
+<!-- Display a loading message while the Observable is being resolved -->
+<ng-template #loading>
+  <p>Loading details...</p>
+</ng-template>

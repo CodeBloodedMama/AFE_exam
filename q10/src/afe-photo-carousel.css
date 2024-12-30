@@ -1,0 +1,65 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: Arial, sans-serif;
+}
+
+afe-photo-carousel {
+  position: relative;
+  width: 500px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 20px;
+  font-family: Arial, sans-serif;
+  overflow: auto;
+}
+
+afe-photo-carousel h2,
+h4 {
+  margin-bottom: 0;
+  margin-top: 0;
+  margin-left: 10px;
+  font-family: Arial, sans-serif;
+}
+
+afe-photo-carousel .image-container {
+  margin-top: 15px;
+  width: 100%;
+  flex: 1;
+  background-color: black;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+afe-photo-carousel button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  font-size: 48px;
+  color: white;
+  position: absolute;
+  top: 50%;
+}
+
+afe-photo-carousel button.back {
+  left: 10px;
+}
+
+afe-photo-carousel button.forward {
+  right: 10px;
+}

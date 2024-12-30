@@ -1,0 +1,15 @@
+<div [ngClass]="'component-wrapper'">
+  <h1>Pick a number</h1>
+  <div [ngClass]="'button-container'">
+    <button routerLink="/Pick/1">1</button>
+    <button routerLink="/Pick/2">2</button>
+    <button routerLink="/Pick/3">3</button>
+    <button routerLink="/Pick/4">4</button>
+    <button routerLink="/Pick/5">5</button>
+    <button routerLink="/Pick/6">6</button>
+  </div>
+  <div [ngClass]="'button-container'">
+    <button routerLink="/Pick/0">Guarded number 0</button>
+    <button routerLink="/Pick/7">Bad number 7</button>
+  </div>
+</div>

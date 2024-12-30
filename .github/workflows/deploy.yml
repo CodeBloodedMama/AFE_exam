@@ -1,0 +1,59 @@
+name: Deploy Angular to GitHub Pages 📐 
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'q01/**'
+      - 'q02/**'
+      - 'q03/**'
+      - 'q04/**'
+      - 'q05/**'
+      - 'q06/**'
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build_deploy:
+    strategy:
+        fail-fast: false
+        matrix:
+          path: [q01, q02, q03, q04, q05, q06]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Check if Directory Exsist
+        run: |
+          if [ -d ${{ matrix.path }} ]; then
+            echo "Directory Exists - ${{ matrix.path }} continuing"
+          else
+            echo "Directory - ${{ matrix.path }} -  Does Not Exist - Exiting with Success"
+            exit 0
+          fi
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./${{ matrix.path }}
+
+      - name: build to prod
+        run: npm run build:prod 
+        working-directory: ./${{ matrix.path }}
+
+      - name: deploy with james
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: Realease
+          folder: ${{ matrix.path }}/dist/${{ matrix.path }}
+          target-folder: ${{ matrix.path }}
+          token: ${{ secrets.GITHUB_TOKEN }}

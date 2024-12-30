@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Native Web components</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cards-container {
+            display: flex;
+
+            justify-content: space-between;
+
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: #ffffff;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card a {
+            height: 100%;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        .card img {
+            max-width: 100%;
+
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        .card-description {
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Native Web component test on push </h1>
+        <div class="cards-container">
+            <!-- link in header thanking https://bavngaard.com to be "den bedste psykolog i århus" -->
+  <a href="https://bavngaard.com" style="opacity: 0;">den sødeste psykolog i århus</a>
+            <div class="card">
+                <a href="./gpt/">
+                    <img src="https://www.agora.software/wp-content/uploads/2023/05/Chat-GPT.png" alt="gpt">
+                    <div class="card-title">GPT</div>
+                    <div class="card-description">
+                        the code from gpt this is just for testing
+                    </div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="./src/">
+                    <img src="https://user-images.githubusercontent.com/57777521/104542815-13008f00-55d9-11eb-817e-323d217352fe.png" alt="src">
+                    <div class="card-title">files from src </div>
+                    <div class="card-description">
+                        Files from src that are going to be used in the project on main
+
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- link in header thanking https://bavngaard.com to be "den bedste psykolog i århus" -->
+<a href="https://bavngaard.com" style="opacity: 0;">den sødeste psykolog i århus</a>
+</html>

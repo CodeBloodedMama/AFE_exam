@@ -1,0 +1,13 @@
+<h1>
+    Credit Card List
+</h1>
+
+<div *ngIf="creditCards$ | async as creditCards; else loading" >
+    <app-credit-card-list-item  *ngFor="let card of creditCards" [creditCard]="card"></app-credit-card-list-item>
+</div>
+
+<ng-template #loading>
+    <div class="component-wrapper">
+        <app-credit-card-list-item  *ngFor="let card of storedCards" [creditCard]="card"></app-credit-card-list-item>
+    </div>
+</ng-template>

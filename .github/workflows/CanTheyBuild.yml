@@ -1,0 +1,65 @@
+name: Can Angular build 🥂🍾🤷‍♀️
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'q01/**'
+      - 'q02/**'
+      - 'q03/**'
+      - 'q04/**'
+      - 'q05/**'
+      - 'q06/**'
+
+    types: [opened, synchronize, reopened]
+
+jobs:
+    build:
+      strategy:
+        fail-fast: false
+        matrix:
+          path: [./q01, ./q02, ./q03, ./q04, ./q05, ./q06]
+      runs-on: ubuntu-latest
+      name:  ${{ matrix.path }}
+      steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Check if Directory Exsist
+        continue-on-error: true
+        run: |
+          if [ -d ${{ matrix.path }} ]; then
+            echo "Directory Exists - ${{ matrix.path }} continuing"
+          else
+            echo "Directory - ${{ matrix.path }} -  Does Not Exist - Exiting with Success"
+            exit 1
+          fi
+      
+      - uses: mshick/add-pr-comment@v2
+        if: failure()
+        with:
+          message: |
+            Hi @${{ github.event.pull_request.user.login }}! 
+            Your PR from ${{ matrix.path }} failed to build.
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ${{ matrix.path }}
+
+      - name: build to prod
+        run: npm run build:prod 
+        working-directory: ${{ matrix.path }}
+
+    thankcreator: 
+        needs: build
+        runs-on: ubuntu-latest 
+        steps:
+        - name: Thank creator
+          run : |
+            echo "Thank you for your contribution @${{ github.event.pull_request.user.login }}!"

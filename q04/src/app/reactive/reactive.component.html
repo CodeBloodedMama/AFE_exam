@@ -1,0 +1,119 @@
+<div
+  [ngClass]="{
+    'component-wrapper': true,
+    'invalid-form':
+      userForm.invalid &&
+      userForm.touched &&
+      userForm.controls.phone.touched &&
+      userForm.controls.email.touched &&
+      userForm.controls.firstName.touched
+  }"
+>
+  <h1>Reactive</h1>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <label
+      [ngClass]="{
+        'invalid-label':
+          userForm.controls.firstName.invalid &&
+          userForm.controls.firstName.touched
+      }"
+      for="first-name"
+      >First name*
+    </label>
+    <input
+      [ngClass]="{
+        'invalid-field':
+          userForm.controls.firstName.invalid &&
+          userForm.controls.firstName.touched
+      }"
+      type="text"
+      id="first-name"
+      formControlName="firstName"
+    />
+    <label
+      [ngClass]="{
+        'invalid-label':
+          userForm.controls.lastName.invalid &&
+          userForm.controls.lastName.touched
+      }"
+      for="last-name"
+      >Last name</label
+    >
+    <input
+      [ngClass]="{
+        'invalid-field':
+          userForm.controls.lastName.invalid &&
+          userForm.controls.lastName.touched
+      }"
+      type="text"
+      id="last-name"
+      formControlName="lastName"
+    />
+    <label
+      [ngClass]="{
+        'invalid-label':
+          userForm.controls.email.invalid && userForm.controls.email.touched
+      }"
+      for="email"
+      >E-mail*
+    </label>
+    <input
+      [ngClass]="{
+        'invalid-field':
+          userForm.controls.email.invalid && userForm.controls.email.touched
+      }"
+      type="text"
+      id="email"
+      formControlName="email"
+    />
+    <label
+      [ngClass]="{
+        'invalid-label':
+          userForm.controls.phone.invalid && userForm.controls.phone.touched
+      }"
+      for="phone"
+      >Phone*
+    </label>
+    <input
+      [ngClass]="{
+        'invalid-field':
+          userForm.controls.phone.invalid && userForm.controls.phone.touched
+      }"
+      type="tel"
+      id="phone"
+      formControlName="phone"
+    />
+    <button type="submit" [disabled]="userForm.invalid">Submit</button>
+    <small> * Requirred </small>
+  </form>
+  <div>
+    <h2>Form Value</h2>
+    <pre>{{ userForm.value | json }}</pre>
+    <h2>Form Status</h2>
+    <pre
+      style="color: green"
+      [ngClass]="{'invalid-label': userForm.invalid,  }"
+      >{{ userForm.status | json }}</pre
+    >
+  </div>
+
+
+  <!-- WITHOUT CLASSES -->
+  <div id="hiddendiv" [hidden]="true">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <label for="first-name">First Name* </label>
+      <input type="text" id="first-name" formControlName="firstName" />
+
+      <label for="last-name">Last Name</label>
+      <input type="text" id="last-name" formControlName="lastName" />
+
+      <label for="email">Email* </label>
+      <input type="text" id="email" formControlName="email" />
+
+      <label for="phone">Phone Number* </label>
+      <input type="tel" id="phone" formControlName="phone" />
+
+      <button type="submit" [disabled]="userForm.invalid">Submit</button>
+    </form>
+  </div>
+</div>

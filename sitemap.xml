@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Main Pages -->
+    <url>
+        <loc>https://ninjaneer127.github.io/AFE-Eksamen/</loc>
+        <lastmod>2024-01-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://ninjaneer127.github.io/AFE-Eksamen/q01/</loc>
+        <lastmod>2024-01-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://ninjaneer127.github.io/AFE-Eksamen/q02/</loc>
+        <lastmod>2024-01-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://ninjaneer127.github.io/AFE-Eksamen/q03/</loc>
+        <lastmod>2024-01-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Question 3 Sub-pages -->
+    <url>
+        <loc>https://ninjaneer127.github.io/AFE-Eksamen/q03/Lazy</loc>
+        <lastmod>2024-01-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ninjaneer127.github.io/AFE-Eksamen/q03/Pick</loc>
+        <lastmod>2024-01-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ninjaneer127.github.io/AFE-Eksamen/q03/Pick/number</loc>
+        <lastmod>2024-01-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <!-- Lazy Module Sub-pages -->
+    <url>
+        <loc>https://ninjaneer127.github.io/AFE-Eksamen/q03/Lazy/Red</loc>
+        <lastmod>2024-01-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://ninjaneer127.github.io/AFE-Eksamen/q03/Lazy/Blue</loc>
+        <lastmod>2024-01-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <!-- Question 4 -->
+    <url>
+        <loc>https://ninjaneer127.github.io/AFE-Eksamen/q04/</loc>
+        <lastmod>2024-01-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- Question 5 -->
+    <url>
+        <loc>https://ninjaneer127.github.io/AFE-Eksamen/q05/</loc>
+        <lastmod>2024-01-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- Question 6 -->
+    <url>
+        <loc>https://ninjaneer127.github.io/AFE-Eksamen/q06/</loc>
+        <lastmod>2024-01-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- Additional URLs for Question 6 - Progressive Web Apps -->
+    <url>
+        <loc>https://ninjaneer127.github.io/AFE-Eksamen/q06/about</loc>
+        <lastmod>2024-01-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ninjaneer127.github.io/AFE-Eksamen/q06/creditcard</loc>
+        <lastmod>2024-01-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ninjaneer127.github.io/AFE-Eksamen/q06/creditcard/details/:card_number</loc>
+        <lastmod>2024-01-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ninjaneer127.github.io/AFE-Eksamen/q06/creditcard/add</loc>
+        <lastmod>2024-01-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <!-- Lazy-loaded Transaction Module Sub-pages -->
+    <url>
+        <loc>https://ninjaneer127.github.io/AFE-Eksamen/q06/transaction</loc>
+        <lastmod>2024-01-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://ninjaneer127.github.io/AFE-Eksamen/q06/transaction/add</loc>
+        <lastmod>2024-01-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+</urlset>

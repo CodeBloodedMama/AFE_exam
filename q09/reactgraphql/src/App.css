@@ -1,0 +1,45 @@
+/* Add styling for the main app */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(69, 63, 63, 0.1);
+}
+
+h2 {
+  color: #4285f4;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+h1 {
+  color: #4285f4;
+}
+
+div {
+  border: 1px solid #ddd;
+  margin: 10px 0;
+  padding: 15px;
+}
+
+h3 {
+  color: #4285f4;
+  margin-bottom: 10px;
+}
+
+p {
+  margin: 5px 0;
+}

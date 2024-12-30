@@ -88,3 +88,41 @@ Du kan også importere et Angular-modul eller selvstændig komponent i et andet 
 Komponent-til-komponent-kommunikation kan opnås ved hjælp af `@Input`. Lad os tage et eksempel med en parent- og en child-komponent, der skal kommunikere. Parent-komponenten sender en værdi til child-komponentens variabel, der er dekoreret med `@Input`-dekoratoren. Child-komponenten kan derefter bruge denne værdi og vise den. Husk at tjekke modulet for at sikre, at alt er importeret korrekt.
 
 Se mere i linje 26 i [Parent HTML](./src/app/example-component/example-component.component.html) og linje 12 i [Child @Input](./src/app/display-count/display-count.component.ts)
+_____
+øvepapir:
+
+# Introduktion til Angular og Grundlæggende Koncepter
+
+## Indledning
+God dag, i dag vil jeg præsentere de grundlæggende aspekter af Angular, som er et kraftfuldt framework til bygning af dynamiske webapplikationer. Jeg vil gennemgå nøgleelementerne i Angular arkitekturen og demonstrere, hvordan vi har anvendt disse i vores projekt.
+
+## Komponentbaseret Arkitektur
+
+### Forklaring
+En af hovedpillerne i Angular er dens komponentbaserede arkitektur. Komponenter er essentielle byggesten, som hver især kapsler visning og logik. Dette gør det nemmere at vedligeholde og genbruge kode. I vores projekt bruger vi en række komponenter, herunder `AppComponent` som er roden og flere underordnede komponenter som håndterer specifikke opgaver.
+
+### Demonstration
+Her på skærmen kan I se koden for `AppComponent`, som er defineret i `app.component.ts`. Notér, hvordan vi bruger `@Component`-dekorationen til at definere metadata som selector, templateUrl og styleUrls, som knytter vores TypeScript-logik til HTML og CSS.
+
+## Direktiver og Data Binding
+
+### Forklaring
+Angular benytter sig også af direktiver, der tillader os at manipulere DOM direkte i templates. Vi anvender både strukturelle direktiver som `*ngIf` og `*ngFor` til at kontrollere, hvad der vises i brugergrænsefladen baseret på logikken i vores data.
+
+### Demonstration
+På denne slide viser jeg, hvordan `*ngIf` anvendes i `example-component.component.html` til betinget at vise elementer, afhængigt af brugerens interaktion. Dette er kraftfuldt, da det reducerer behovet for at manipulere DOM'en direkte med JavaScript og tillader en mere deklarativ tilgang.
+
+## Services og Dependency Injection
+
+### Forklaring
+Services i Angular er singleton-objekter, der indeholder genanvendelig forretningslogik. De separerer datahåndtering fra komponenterne, hvilket gør vores kode renere og lettere at teste. Angular's dependency injection-system gør det nemt at levere disse services, hvor de er nødvendige.
+
+### Demonstration
+Se eksempelvis på vores `LoggerService`, som er defineret i `logger.service.ts`. Denne service bruges til at logge vigtige systemhændelser og fejl, og den er tilgængelig overalt i vores applikation takket være Angular's injector, som administrerer afhængighederne for os.
+
+## Afsluttende bemærkninger
+
+Til sammen illustrerer disse eksempler, hvordan Angulars arkitektur understøtter opbygningen af skalerbare og vedligeholdelige webapplikationer. Ved at adskille bekymringer mellem komponenter, direktiver og services, kan vi bygge mere komplekse brugergrænseflader på en organiseret måde.
+
+### Opfordring til spørgsmål
+Har I spørgsmål til de præsenterede koncepter eller specifikke dele af koden?
