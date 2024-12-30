@@ -1,90 +1,130 @@
-# Q01 Angular in general
+# Q1
 
-<!-- If not enough: Angular data binding (Angular Components) -->
+<!-- Hvis ikke nok: Angular data binding (Angular Components) -->
 
-<!-- References to the code will be made in markdown by using: See more in line XX in [Name of snippet]("PATH_TO_FILE") -->
+<!-- Referencer til koden vil blive lavet i markdown ved hjælp af: Se mere i linje XX i [Navn på uddrag]("STI_TIL_FIL") -->
 
-**Quesitons:**
+## Introduktion - Hvad handler det om / hvad vil du tale om
+### Dæk følgende punkter:
+    - Explain the basic Angular concepts (components, directives, modules, services, pipes)
+    - Explain how dependency injection is used in Angular
+    - Explain how to component-to-component communication can be implemented 
 
-- Explain the basic Angular concepts (components, directives, modules, services, pipes)
-- Explain how dependency injection is used in Angular
-- Explain how to component-to-component communication can be implemented
+    `ng serve` for at  starter counter demo.
+    
+---
 
-Angular is an open-source JavaScript client side MVC framework developed and maintained by Google. Angular is a complete rewrite of its popular predecessor AngularJS. Angular applications are primarily implemented by using TypeScript, HTML and CSS. Angular is a component based framework, where components are the main building blocks of an Angular application. Components are reusable and can be nested inside each other. Components are also the main way of communicating between different parts of an Angular application. Angular applications are built by using a combination of components, directives, modules, services and pipes.
+Angular er et open-source JavaScript-klientside MVC-framework udviklet og vedligeholdt af Google. Angular er en komplet omskrivning af sin populære forgænger AngularJS. Angular-applikationer implementeres primært ved hjælp af TypeScript, HTML og CSS. Angular er et komponentbaseret framework, hvor komponenter er de primære byggesten i en Angular-applikation. Komponenter er genanvendelige og kan indlejres i hinanden. Komponenter er også den primære måde at kommunikere mellem forskellige dele af en Angular-applikation. Angular-applikationer bygges ved hjælp af en kombination af komponenter, direktiver, moduler, services og pipes.
 
-Angular is a complete framework and has a CLI that can be used to create and manage Angular applications.
+Angular er et komplet framework og har en CLI, der kan bruges til at oprette og administrere Angular-applikationer.
 
-## Angular concepts
+## Angular-koncepter
 
-### Angular components
+### Angular-komponenter
 
-Angular components are defined by a Typescript class as well as an HTML template. The component class contains the data and logic for the component, while the HTML template contains the view. The component class is decorated with the `@Component` decorator, which contains metadata about the component. The `@Component` decorator contains the selector, which is used to identify the component in the HTML template, the template URL, which is the path to the HTML template, and the style URL, which is the path to the CSS file for the component.
+Angular-komponenter defineres af en TypeScript-klasse samt en HTML-templat. Komponentklassen indeholder data og logik for komponenten, mens HTML-templaten indeholder visningen. Komponentklassen er dekoreret med `@Component`-dekoratoren, der indeholder metadata om komponenten. `@Component`-dekoratoren indeholder en `selector`, der bruges til at identificere komponenten i HTML-templaten, `templateUrl`, der er stien til HTML-templaten, og `styleUrls`, der er stien til CSS-filerne for komponenten.
 
-Whenever an Angular application is created there will always be an App component that serves as the root component.
+Når en Angular-applikation oprettes, vil der altid være en App-komponent, der fungerer som root-komponent.
 
-The structure can be seen in the directory called `example-component` in the `src/app` folder.
+Strukturen kan ses i mappen kaldet `example-component` i mappen `src/app`.
 
-Angular components can be craeted with the CLI by using `ng g component [componentName]` but have the functionality to be standalone. Standalone components reduce the need for ngModules and can be used to create reusable components. They specify their own dependencies and can be used in any Angular application. The difference between standalone components and regular components is that standalone components are not declared in an ngModule.
+Angular-komponenter kan oprettes med CLI ved hjælp af `ng g component [componentName]`, men de har funktionalitet til at være selvstændige. Selvstændige komponenter reducerer behovet for `ngModules` og kan bruges til at oprette genanvendelige komponenter. De angiver deres egne afhængigheder og kan bruges i enhver Angular-applikation. Forskellen mellem selvstændige komponenter og almindelige komponenter er, at selvstændige komponenter ikke er deklareret i en `ngModule`.
 
-### Angular directives
+### Angular-direktiver
 
-There are three different types of directives in Angular: component directives, attribute directives and structural directives.
+Der er tre forskellige typer direktiver i Angular: komponentdirektiver, attributdirektiver og strukturdirektiver.
 
-**Component directives:**
-A component is simply a directive with a template.
+**Komponentdirektiver:**
+En komponent er den oftes anvendte type direktiv, som altid indeholder en template.
 
-**Attribute directives:**
-Change the appearance or behavior of an element, component, or another directive.
+**Attributdirektiver:**
+Ændrer udseendet eller adfærden af et element, en komponent eller en anden direktiv.
 
-Some of these include: `NgClass` and `NgStyle` which can be used to dynamically add or remove CSS classes and styles to an element, `NgModel` which can be used to bind an input, select or textarea element to a property on the component class.
-To use an attribute directive, it must be added to an element as an attribute.
+Nogle af disse inkluderer: `NgClass` og `NgStyle`, der kan bruges til dynamisk at tilføje eller fjerne CSS-klasser og stilarter til et element, `NgModel`, der kan bruges til at binde et input-, select- eller textarea-element til en egenskab på komponentklassen. For at bruge en attributdirektiv skal den tilføjes som attribut til et element.
 
-See more in line 1 in [Styling using NgClass](./src/app/example-component/example-component.component.html)
+Se mere i linje 1 i [Styling using NgClass](./src/app/example-component/example-component.component.html)
 
-**Structural directives:**
-Change the DOM layout by adding and removing DOM elements.
+**Strukturdirektiver:**
+Ændrer DOM-layoutet ved at tilføje og fjerne DOM-elementer.
 
-Some of these include `NgIf` which can be used to add or remove an element from the DOM based on a condition, `NgFor` which can be used to repeat a template for each item in a list, and `NgSwitch` which can be used to conditionally display elements based on a value.
+Nogle af disse inkluderer `NgIf`, der kan bruges til at tilføje eller fjerne et element fra DOM'en baseret på en betingelse, `NgFor`, der kan bruges til at gentage en template for hvert element i en liste, og `NgSwitch`, der kan bruges til betinget at vise elementer baseret på en værdi.
 
-See more in line 14 and 16 in [List or no list](./src/app/example-component/example-component.component.html)
+Se mere i linje 14 og 16 i [List or no list](./src/app/example-component/example-component.component.html)
 
-### Angular services and dependency injection
+### Angular-services og dependency injection
 
-A service can be any value, function or feature that an application needs. A service is typically a class with a narrow purpose. You register a service with the Angular injector, which is responsible for creating and delivering instances of the service when needed.
+En service kan være en værdi, funktion eller feature, som en applikation har brug for. En service er typisk en klasse med et snævert formål. En service registreres med Angular-injektoren, der er ansvarlig for at oprette og levere instanser af servicen, når det er nødvendigt.
 
-You can create a service with the CLI by using `ng g service [serviceName]`
+Du kan oprette en service med CLI ved hjælp af `ng g service [serviceName]`.
 
-Code that is not directly interacting with the view should be placed in a service. Often you would have an asynchronous service that talks to a back end api. Services are also used to share data between unrelated components.
+Kode, der ikke direkte interagerer med visningen, skal placeres i en service. Ofte vil du have en asynkron service, der taler med en backend-API. Services bruges også til at dele data mellem ikke-relaterede komponenter.
 
-To create a service you have to use the `@Injectable` decorator. This decorator tells Angular that the class can be used with dependency injection. The `@Injectable` decorator is not strictly required if the service has no dependencies and does not need to be injected anywhere, but it is considered good practice to always use it. The `@Injectable` has a providedIn property, which is used to specify the provider of the service. The providedIn property can be set to root, which means that the service is provided in the root injector. This means that the service is available everywhere in the application. The providedIn property can also be set to a specific module, which means that the service is only available in that module.
+For at oprette en service skal `@Injectable`-dekoratoren bruges. Denne dekorator fortæller Angular, at klassen kan bruges med dependency injection. `@Injectable`-dekoratoren er ikke strengt nødvendig, hvis servicen ikke har afhængigheder og ikke behøver at blive injiceret nogen steder, men det anses for god praksis altid at bruge den. `@Injectable` har en `providedIn`-egenskab, der bruges til at angive udbyderen af servicen. `providedIn`-egenskaben kan indstilles til `root`, hvilket betyder, at servicen leveres i root injector'en. Dette betyder, at servicen er tilgængelig overalt i applikationen. `providedIn`-egenskaben kan også indstilles til et specifikt modul, hvilket betyder, at servicen kun er tilgængelig i det modul.
 
-See more in line 8 in [Logger service](./src/app/logger.service.ts) which is injected in line 17 in [Example component](./src/app/example-component/example-component.component.ts)
+Se mere i linje 8 i [Logger service](./src/app/logger.service.ts)
 
-DI requires that the service or value or function is asked for by the consumer. The consumer is the component that needs the service. The consumer must ask for the service in the constructor.
+DI kræver, at servicen eller værdien eller funktionen efterspørges af forbrugeren. Forbrugeren er komponenten, der har brug for servicen. Forbrugeren skal efterspørge servicen i constructor'en.
 
-### Angular pipes
+### Angular-pipes
 
-Angular pipes are like any other pipe in programming. They take some input and transform it to some output. Pipes are used to format data for display. Angular comes with a set of built-in pipes, but you can also create your own custom pipes.
+Angular-pipes er ligesom enhver anden pipe i programmering. De tager et input og transformerer det til et output. Pipes bruges til at formatere data til visning. Angular leveres med et sæt indbyggede pipes, men du kan også oprette dine egne brugerdefinerede pipes.
 
-Pipes can be used by the pipe operator `|` and can be chained to other pipes.
+Pipes kan bruges ved hjælp af pipe-operatoren `|` og kan kædes til andre pipes.
 
-See more in line 23 in [Example HTML](./src/app/example-component/example-component.component.html)
+Se mere i linje 23 i [Eksempel HTML](./src/app/example-component/example-component.component.html)
 
-There are two forms of pipes in Angular: pure and impure pipes. Pure pipes are only called when Angular detects a change in the value or the parameters passed to a pipe. Impure pipes are called for every change detection cycle, which can be very expensive. A pure pipe must use a pure function, which is one that processes inputs and returns values without side effects
-    – In other words, given the same input, a pure function should always return the same output
+Der er to former for pipes i Angular: pure og impure pipes. Pure pipes kaldes kun, når Angular opdager en ændring i værdien eller parametrene, der sendes til en pipe. Impure pipes kaldes for hver ændring i change detection cycle, hvilket kan være meget dyrt. En ren pipe skal bruge en ren funktion, som er en funktion, der behandler input og returnerer værdier uden sideeffekter. Med andre ord skal en ren funktion altid returnere den samme output for det samme input.
 
-Angular also allows for costum pipes. A custom pipe can be made with the CLI by using `ng g pipe [pipeName]`. In order to implement a costum pipe you have to implement the `PipeTransform` interface. The `PipeTransform` interface has a transform method that takes a value and an optional set of parameters and returns the transformed value. The transform method is called whenever the value or the parameters change.
+Angular tillader også brugerdefinerede pipes. En brugerdefineret pipe kan oprettes med CLI ved hjælp af `ng g pipe [pipeName]`. For at implementere en brugerdefineret pipe skal du implementere `PipeTransform`-interfacet. `PipeTransform`-interfacet har en transform-metode, der tager en værdi og en valgfri række parametre og returnerer den transformerende værdi. Transform-metoden kaldes, når værdien eller parametrene ændres.
 
-### Angular modules
+### Angular-moduler
 
-Angular modules are used to organize an application into cohesive blocks of functionality. An Angular application is defined by a root module, which is the AppModule. When you create a new component with the CLI, the CLI automatically adds the component to the AppModule. The AppModule is the root module of the application and is the entry point for the application. The AppModule is decorated with the `@NgModule` decorator, which contains metadata about the module. The `@NgModule` decorator contains the declarations, which is an array of the components, directives and pipes that belong to the module, the imports, which is an array of the modules that the module depends on, the providers, which is an array of the services that the module provides, and the bootstrap, which is an array of the components that are bootstrapped when the application starts.
+Angular-moduler bruges til at organisere en applikation i sammenhængende blokke af funktionalitet. En Angular-applikation defineres af et root-modul, som er AppModule. Når du opretter en ny komponent med CLI, tilføjer CLI automatisk komponenten til AppModule. AppModule er root-modulet i applikationen og er indgangspunktet for applikationen. AppModule er dekoreret med `@NgModule`-dekoratoren, der indeholder metadata om modulet. `@NgModule`-dekoratoren indeholder `deklarations`, som er et array af komponenter, direktiver og pipes, der tilhører modulet, `imports`, som er et array af de moduler, som modulet afhænger af, `providers`, som er et array af de tjenester, som modulet leverer, og `bootstrap`, som er et array af de komponenter, der startes, når applikationen starter.
 
-See [AppModule](./src/app/app.module.ts)
+Se [AppModule](./src/app/app.module.ts)
 
-You can also import an angular module or standalone component into another module.
+Du kan også importere et Angular-modul eller selvstændig komponent i et andet modul.
 
-## Component-to-component communication
+## Komponent-til-komponent-kommunikation
 
-Component to component communication can be achieved by using the `@Input`. Let's take an example with a parent and a child component that need to communicate. The parent component passes a value to the child components variable that is decorated with the `@Input` decorator. The child component can then use this value and display it. Don't forget to check the module and make sure everything is imported correctly.
+Komponent-til-komponent-kommunikation kan opnås ved hjælp af `@Input`. Lad os tage et eksempel med en parent- og en child-komponent, der skal kommunikere. Parent-komponenten sender en værdi til child-komponentens variabel, der er dekoreret med `@Input`-dekoratoren. Child-komponenten kan derefter bruge denne værdi og vise den. Husk at tjekke modulet for at sikre, at alt er importeret korrekt.
 
-See more in line 26 in [Parent HTML](./src/app/example-component/example-component.component.html) and line 12 in [Child @Input](./src/app/display-count/display-count.component.ts)
+Se mere i linje 26 i [Parent HTML](./src/app/example-component/example-component.component.html) og linje 12 i [Child @Input](./src/app/display-count/display-count.component.ts)
+_____
+øvepapir:
+
+# Introduktion til Angular og Grundlæggende Koncepter
+
+## Indledning
+God dag, i dag vil jeg præsentere de grundlæggende aspekter af Angular, som er et kraftfuldt framework til bygning af dynamiske webapplikationer. Jeg vil gennemgå nøgleelementerne i Angular arkitekturen og demonstrere, hvordan vi har anvendt disse i vores projekt.
+
+## Komponentbaseret Arkitektur
+
+### Forklaring
+En af hovedpillerne i Angular er dens komponentbaserede arkitektur. Komponenter er essentielle byggesten, som hver især kapsler visning og logik. Dette gør det nemmere at vedligeholde og genbruge kode. I vores projekt bruger vi en række komponenter, herunder `AppComponent` som er roden og flere underordnede komponenter som håndterer specifikke opgaver.
+
+### Demonstration
+Her på skærmen kan I se koden for `AppComponent`, som er defineret i `app.component.ts`. Notér, hvordan vi bruger `@Component`-dekorationen til at definere metadata som selector, templateUrl og styleUrls, som knytter vores TypeScript-logik til HTML og CSS.
+
+## Direktiver og Data Binding
+
+### Forklaring
+Angular benytter sig også af direktiver, der tillader os at manipulere DOM direkte i templates. Vi anvender både strukturelle direktiver som `*ngIf` og `*ngFor` til at kontrollere, hvad der vises i brugergrænsefladen baseret på logikken i vores data.
+
+### Demonstration
+På denne slide viser jeg, hvordan `*ngIf` anvendes i `example-component.component.html` til betinget at vise elementer, afhængigt af brugerens interaktion. Dette er kraftfuldt, da det reducerer behovet for at manipulere DOM'en direkte med JavaScript og tillader en mere deklarativ tilgang.
+
+## Services og Dependency Injection
+
+### Forklaring
+Services i Angular er singleton-objekter, der indeholder genanvendelig forretningslogik. De separerer datahåndtering fra komponenterne, hvilket gør vores kode renere og lettere at teste. Angular's dependency injection-system gør det nemt at levere disse services, hvor de er nødvendige.
+
+### Demonstration
+Se eksempelvis på vores `LoggerService`, som er defineret i `logger.service.ts`. Denne service bruges til at logge vigtige systemhændelser og fejl, og den er tilgængelig overalt i vores applikation takket være Angular's injector, som administrerer afhængighederne for os.
+
+## Afsluttende bemærkninger
+
+Til sammen illustrerer disse eksempler, hvordan Angulars arkitektur understøtter opbygningen af skalerbare og vedligeholdelige webapplikationer. Ved at adskille bekymringer mellem komponenter, direktiver og services, kan vi bygge mere komplekse brugergrænseflader på en organiseret måde.
+
+### Opfordring til spørgsmål
+Har I spørgsmål til de præsenterede koncepter eller specifikke dele af koden?
