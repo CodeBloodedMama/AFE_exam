@@ -1,7 +1,7 @@
 import { gql, useQuery } from '@apollo/client';
 import CircularProgress from '@mui/material/CircularProgress';
 
-
+// Render en dropdown-menu med de hentede klassenavne
 const query = gql`
   query Query($index: String) {
     class(index: $index) {
@@ -22,19 +22,26 @@ const query = gql`
   }
 `;
 
+
+// Definer en React-komponent, der bruger Apollo Client til at udføre forespørgslen
+
 export default function Spells({ classIndex }) {
+  // små bogstaver
   const selectedClass = classIndex.toLowerCase();
   console.log(selectedClass);
+  // Brug useQuery hook til at udføre forespørgslen og håndtere loading, error og data tilstande
   const { loading, error, data } = useQuery(query, {
     variables: { index: selectedClass },
   });
-
+ // Vis en loading besked, mens dataene hentes
   if (loading) return <CircularProgress />;
+  // Vis en fejlbesked, hvis der opstår en fejl under hentning af data
   if (error) return <p>Error: {error.message}</p>;
 
   console.log(data);
+  // Vis klassens navn og beskrivelse
   const spells = data.class.spells;
-
+  // Render en dropdown-menu med de hentede klassenavne
   return (
     <>
       <h1>Class Spells</h1>

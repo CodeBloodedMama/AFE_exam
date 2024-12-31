@@ -1,21 +1,24 @@
 "server-only"
+
 import { gql } from "@apollo/client";
 import { getClient } from "../../../lib/apolloClientServer";
 import styles from './Skills.module.css';
-// import { useEffect, useState } from "react";
 
+// Definerer en type for Skills
 export type Skill = {
   index: string;
   name: string;
   desc: string;
 };
+
+
 // gql fra @apollo/client definerer GraphQL-forespørgsler.
 const query = gql` query { 
   class {
     name
   }
 }`;
-
+// 
 const skillsQuerry = gql` query Skills {
   skills {
     index
@@ -26,16 +29,8 @@ const skillsQuerry = gql` query Skills {
 
 export default async function Page() {
 
-// Client side code for reference
-
-  // const [counter, setCounter] = useState<number>(0);
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCounter((counter) => counter + 1);
-  //   }, 1000);
-  //   return () => clearInterval(interval);
-  // }, []);
   const client = getClient(); // funktionen er en instans af ApolloClient(grapgql-client)
+
 
   const { data } = await client.query({ query ,     
     context: {

@@ -155,7 +155,7 @@ Fleksible forespørgsler tillader at man kan hente specifikke resoujrcer i en en
 
 GraphQL adskiller sig i React sammenlignet med Next.js, da man ikke har en serverkomponent. Du har kun klientkomponenter.
 
-Tilgangen er stadig den samme. Vi opretter en ny Apollo Client og bruger provider som en wrapper til appen. Se mere på linje 21 i[index.js](./reactgraphql/src/index.js)
+Tilgangen er stadig den samme som i NextJS ( se næste kapitel) Vi opretter en ny Apollo Client og bruger provider som en wrapper til appen. Se mere på linje 21 i[index.js](./reactgraphql/src/index.js)
 
 Derefter opretter vi nogle klientkomponenter, der bruger Apollo Client. Se mere i [line 16 & 18](./reactgraphql/src/App.js).
 
@@ -197,6 +197,8 @@ Apollo Client er et state management bibliotek for JavaScript, der gør det muli
 
 Apollo Clienten bruges til at hente, cache og ændre applikationsdata, alt imens UI automatisk opdateres.
 
+Jeg bruger Apollo Client til at udføre GraphQL-forespørgsler og håndtere datahentning i både React- og Next.js-komponenter. Apollo Client er konfigureret i apollo-wrapper.tsx, og jeg bruger useQuery og useSuspenseQuery hooks til at udføre forespørgsler i komponenterne
+
 #### Client component [Client component](./AppRouterNextGraphQL/src/app/clientcomponent/page.tsx)
 
 Når man bruger en apollo client for en client komponent i NEXT.js skal man gøre følgende for opsætning:
@@ -233,46 +235,40 @@ Vi kan specificere `"server only"` og forhindre klientkomponenter i at blive bru
 `cache: 'no-store'` option allows us to see the suspense fallback that is used in the `Home` component. See more in line 10 in [home component](./AppRouterNextGraphQL/src/app/page.tsx)
 
 
-#### Server component
 
-En anden måde at bruge Apollo Client på er ved at bruge en serverkomponent.
-
-Normalt ville vi bruge getServerSideProps til at aktivere SSR, men dette er kun muligt i pages mappen. Siden den nyeste version af Next.js (13.5) bruger app mappen, er der sket nogle ændringer.
-
-I pages mappen bruges getServerSideProps til at hente data på serveren og videresende props til den standardeksporterede React-komponent i filen. Den initiale HTML for siden er prerenderet fra serveren, efterfulgt af "hydrering" af siden i browseren (gør den interaktiv).
-
-```typescript
-// `pages` directory
- 
-export async function getServerSideProps() {
-  const res = await fetch(`https://...`)
-  const projects = await res.json()
- 
-  return { props: { projects } }
-}
- 
-export default function Dashboard({ projects }) {
-  return (
-    <ul>
-      {projects.map((project) => (
-        <li key={project.id}>{project.name}</li>
-      ))}
-    </ul>
-  )
-}
-```
  implementerering af getServerSideProps adfærd i app mappen. Som dokumenteret på [Next.js hjemmeside](https://nextjs.org/docs/app/building-your-application/upgrading/app-router-migration#step-6-migrating-data-fetching-methods).
 
 See more in line 43 & 50 in [server component](./AppRouterNextGraphQL/src/app/servercomponent/page.tsx)
 
 Apollo client component com vi bruger i  server component (line 40 & 47) kommer fra:
 
-[server component setup](./AppRouterNextGraphQL/lib/apolloClientServer.js)
-
-som opretter en ny apollo client. 
+[server component setup](./AppRouterNextGraphQL/lib/apolloClientServer.js) som opretter en ny apollo client. 
 Serverkomponenten får et navn (barbarian) og færdigheder.
 
 Vi kan specificere "server only" og forhindre klientkomponenter i at blive brugt, men dette er ikke nødvendigt.
 
  `cache: 'no-store'` tillader os at se suspense fallback som bruges i home komponenten. Se mere på  line 10 in [home component](./AppRouterNextGraphQL/src/app/page.tsx)
+
+ ___
+
+ 
+ 
+ Ekstra informationer: 
+
+**Hvordan kan du optimere ydeevnen i din GraphQL-applikation?**
+
+- For at optimere ydeevnen kan jeg bruge teknikker som batching af forespørgsler, fragmenter til at genbruge dele af forespørgsler, og caching af resultater. Jeg kan også bruge Suspense til at håndtere asynkron datahentning og reducere initial load tid.
+
+**Hvad er forskellen mellem queries og mutations i graphQL**
+-  Queries i GraphQL anvendes til at hente data og er read-only, mens mutations bruges til at ændre data på serveren, som f.eks. at tilføje, opdatere eller slette data
+
+**Hvordan kan en klient interagere med en GraphQL API?**
+- En klient kan interagere med en GraphQL API ved at sende forespørgsler, som indeholder specifikke felter eller operationer, de ønsker at udføre. Disse forespørgsler sendes typisk via HTTP, og API'et svarer med de specifikke data, som klienten har bedt om.
+
+**hvordan man implementerer en subscription med GraphQL?**
+- Subscriptions i GraphQL bruges til at håndtere realtidsdata. Det involverer opsætning af en WebSocket-forbindelse fra klienten, hvor klienten sender en forespørgsel, der abonnerer på specifikke dataændringer. Serveren kan derefter skubbe opdateringer til abonnerede klienter, så snart ændringerne sker.
+
+
+**Hvordan kan server-side rendering (SSR) integreres med GraphQL i et Next.js projekt?**
+- I Next.js kan SSR integreres med GraphQL ved at bruge en klient som Apollo til at udføre dataforespørgsler i getServerSideProps eller getInitialProps livscyklusmetoder. Dette sikrer, at al nødvendig data hentes før siden renderes, hvilket forbedrer performance og SEO
 
