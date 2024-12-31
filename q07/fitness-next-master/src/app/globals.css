@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --text-light: #ffffff;
+  --text-dark: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --text-light: #ededed;
+    --text-dark: #0a0a0a;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.bg-light {
+  background-color: var(--background);
+  color: var(--text-dark);
+}
+
+.bg-dark {
+  background-color: var(--foreground);
+  color: var(--text-light);
+}
+
+/* Ensure input fields have white background and black text */
+input, textarea, select {
+  background-color: #ffffff; /* White background */
+  color: #000000; /* Black text */
+  border: 1px solid var(--foreground);
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #000000; /* Black placeholder text */
+  opacity: 0.6;
+}
