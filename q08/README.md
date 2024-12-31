@@ -1,144 +1,130 @@
 # Q08 SEO
 
-- Explain what Search Engine Optimization is. Why and when it is important.
-- What affects SEO ranking?
-- What is Core Web Vitals? And why are they important?
-- Give an overview of Next.js and explain how to improve SEO in a Next Web app.
+<!-- Referencer til kode vil blive lavet i markdown ved at bruge: Se mere i linje XX i [navn på snippet]("PATH_TO_FILE") -->
 
-## What is search egnine optimization
+**Spørgsmål:**
 
-It's a stragegy to make sure your website is higher i google search
+1. Forklar hvad Search Engine Optimization (SEO) er. Hvorfor og hvornår er det vigtigt?
+2. Hvad påvirker SEO-rangering?
+3. Hvad er Core Web Vitals? Og hvorfor er de vigtige?
+4. Giv et overblik over Next.js og forklar hvordan man forbedrer SEO i en Next.js-webapp.
+
+## 1. Hvad er Search Engine Optimization (SEO)?
+
+SEO er en strategi for at sikre, at din hjemmeside rangerer højere i søgemaskiner som Google. Det handler om at øge synligheden og trafikken til din hjemmeside.
 
 ### Ranking
 
-The placement of your website compared to your competetor. The higher you are on searches the more your website will be visited.
+Placeringen af din hjemmeside sammenlignet med dine konkurrenter. Jo højere din hjemmeside rangerer i søgninger, desto flere besøgende vil du få.
 
-### Traffic
+### Trafik
 
-When we look how the seo performs we look at the trafic. How many people visit your website. And from what search terms.
-However not all trafic is good. We need the trafic that is looking for our product. So there for its importent to make content that is relevant to the search. and not just make popular content.
-The only exception is if you make money on ads. Then you want as much trafic as possible.
+SEO-måling fokuserer på trafikken: Hvor mange besøgende får din hjemmeside, og hvilke søgetermer leder dem dertil? Ikke al trafik er dog god trafik – du vil have besøgende, der er interesserede i dit produkt eller din service. Relevante søgetermer og indhold er afgørende.
 
-## What affects SEO ranking?
+## 2. Hvad påvirker SEO-rangering?
 
 ### Sitemap  
 
-When the webcrawlers want to visit sites they can crawl through links. The primary purpose of a sitemap is to list URLs to ensure that search engines can find and crawl them. Sitemaps usually include basic information such as the URL, last modification date, change frequency, and priority of the pages on your site.
+Et sitemap hjælper søgemaskinernes webcrawlere med at finde og indeksere alle sider på dit website. Et sitemap indeholder URL'er samt information som sidernes seneste opdateringsdato og prioritet. For eksempel har vi oprettet et [sitemap](./../sitemap.xml) til mine GitHub-sider.
 
-For our github-pages we made a [sitemap](./../sitemap.xml) where all the URLs are listed.
+Et sitemap kan bruges i Google Search Console til at sikre, at Google hurtigt kan finde alle dine sider.
 
-We can use this to create a visual sitemap or use in in google console to make sure google can find all the pages. and faster ![Alt text](image-2.png)
+Et sitemap kan bruges i Google Search Console til at sikre, at Google hurtigt kan finde alle dine sider.![Alt text](image-2.png)
 see [octopus](https://octopus.do/0slkicvjvyq9)
 
 ### Metaheader
 
-In the header of a HTML page there can ber stored some meta data.
-like in this [q03 index](./../q03/src/index.html)
+I headeren på en HTML-side kan du inkludere metadata som: [q03 index](./../q03/src/index.html)
 The meta data tag have 4 properties: description, keywords, author, and viewport.  
 
 ```html
 <meta name="description" content="This is the description of my website">
 <meta name="keywords" content="keyword1, keyword2, keyword3, keyword4, etc.">
 
-<meta name="author" content="Ninjaneer127, MathiasSchjoedt-Bavngaard, Sirety">
+<meta name="author" content="CodeBloodedMama">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 ```
 
-The description is used to describe the website. This is used by the search engine to describe the website. and is also used to describe the website in the search results. (this is especially important becouse this could be the first thing a user sees about your website.)
+- **Description** bruges af søgemaskiner til at beskrive din hjemmeside i søgeresultater.
+- **Keywords** hjælper søgemaskiner med at kategorisere indholdet.
 
-![Alt text](image-1.png)
+![Alt text](image.png)
 
 read more here:
 [HTML < meta > tag](https://www.w3schools.com/tags/tag_meta.asp)
 
 ### Content
 
-So why is content important for the search engine?
-The search engine wants to give the user the best experience. Therefore it will try to give the user the best content. This is also scored by the users. If a user clicks on a link and then quickly leaves the page again, the search engine will see that the user did not find what he was looking for. This will then affect the ranking of the page. For those search terms.
+Relevant og kvalitets content er afgørende for SEO. Søgemaskiner prioriterer sider, hvor brugerne bliver på siden længe og interagerer med indholdet. Hvis brugere hurtigt forlader en side, kan det skade rangeringen.
 
-### Links  
+### Links
 
-To make sure SE knows what category your website belongs to, it looks at the links of your webpage.
-It will also use these links to "crawl" through a site.
+Links hjælper søgemaskiner med at forstå kategorien og relevansen af din hjemmeside.
 
-#### Internal
+- **Interne links:** Forbinder sider på din egen hjemmeside og forbedrer brugervenligheden.
+- **Eksterne links:** Links til og fra andre hjemmesider. Kvaliteten og relevansen af disse links har stor betydning.
 
-The internal links - the links on your page that links to your own site. These links are used to calculate usability and to se what pages are connected.
+### Ydeevne
 
-#### External
+God ydeevne er essentiel for SEO. Det inkluderer hurtig indlæsningstid, interaktivitet og visuel stabilitet. Disse faktorer måles med Core Web Vitals.
 
-The external links are both outgoing and incoming.
 
-The outgoing links are the ones that you say your weebsite looks like. This way services like google can see what you want your website to look like.
-The incoming links are other peoble that link to your website. Both the number of links affects you SEO "score" but also the correct type of links. Fx. if i own a potato buissness its good that pages that premote potatoes / vegstibles linkes to my site. Like a Health blog saying; "this is a place you can get good potatoes for your salat" is much better, than a page explaining how a atomic clock works and mentions a potato and then linking to you potato shop maybe just to link to the people who don't know what a potato is.
+## 3. Core Web Vitals
 
-Now this link from the atomic power page is maybe not what your customers normaly look for. There for that link wont be as vlauable as the helth blog one.
+Core Web Vitals er tre vigtige målepunkter, der vurderer brugeroplevelsen:
 
-### Performance
+- **Loading Performance (LCP):** Tid det tager at indlæse(loade) det største element.
+- **Interaktivitet (FID):** Tid det tager, før siden reagerer på brugerens første handling.
+- **Visuel Stabilitet (CLS):** Hvor stabil siden er under indlæsning.
 
-To get a good SEO score you need to have a good performance. This means how well your website performs. in terms of core web vitals.
-The better your website performs the better your SEO score will be and higher ranking.
+Disse målepunkter er vigtige for at sikre en god brugeroplevelse og forbedre SEO.
 
-## Core Web Vitals
-
-Core Web Vitals is a subset of Web Vitals, and currently consists of three metrics that measure:
-
-- loading performance (LCP)
-- interactivity (FID)
-- visual stability of the page (CLS)
-
-These mectrics are a way to measure the performance of a website and therefor also a way to measure the user experience.
-Google wants to give the user the best experience.
 ![Alt text](image-3.png)
 
 inspect -> Lighthouse -> Analyze page load
 
-### Loading
+### Loading LCP
 
 how long does it take to load the page. Here we look at the Largest Contentful Paint (LCP) .
 This is the time it takes to load the largest element on the page.
 
-### Interactivity
+### Interactivity FID
 
-How long does it take for the page to be interactive. Here we look at the First Input Delay (FID).
-This is the time it takes for the page to be interactive meaning the time it takes for the page to respond to the first user interaction. like a click or a scroll.
-
+Hvor lang tid tager det for siden at blive interaktiv? 
+Her ser vi på First Input Delay (FID). Dette er den tid, det tager for siden at blive interaktiv, hvilket betyder den tid, det tager for siden at reagere på den første brugerinteraktion, såsom et klik eller en scroll.
 ### Visual stability
 
-How stable is the page. Here we look at the Cumulative Layout Shift (CLS).
-This is the amount of unexpected layout shift of visual page content. This is when the page moves around. like when you are about to click a button and then a ad pops up and you click the ad instead.
+Hvor stabil er siden? Her ser vi på Cumulative Layout Shift (CLS). Dette er mængden af uventet layoutskift af visuelt sideindhold. Dette sker, når siden flytter sig rundt, for eksempel når du er ved at klikke på en knap, og så dukker en annonce op, og du klikker på annoncen i stedet.
 
-When CSS is applyet late fx. Then the page will load and then the CSS will be applied. This will make the page jump around. This is not good for the user experience.
+Når CSS anvendes sent, for eksempel, vil siden først blive indlæst, og derefter vil CSS blive anvendt. Dette vil få siden til at hoppe rundt. Dette er ikke godt for brugeroplevelsen.
 
-## Next.js
+## 4. Next.js og SEO 
+Next.js er et open-source webudviklingsframework til React. Det understøtter server-side rendering (SSR) og statisk generering, som er fordelagtige for SEO.
 
-Next.js is an open-source web development framework for React developed by Vercel. It enables serverside rendering and static generation of websites. It works well with SEO and is very fast because of the serverside rendering. It is easy to deploy the app to Vercel.
 
-### Next.js and SEO
+### Static generation
 
-Next focuses on performance by minimizing the amount of code sent to the client. It also has built in support for code splitting and prefetching. This means that only the code needed for the current page is loaded. Shared code goes in separate bundles to avoid loading the same code multiple times. After the initial load, Next starts to prefetch code for other pages in the background.
+Next.js genererer HTML under build-processen, hvilket sikrer, at siderne er optimeret og klar til at blive indekseret af søgemaskiner.
+Static generaation er default rendering metode i next. Pages som ikke skal fetce externe api'er, vil automatisk blive genereret som statiske under build time. Dette **generere HTML for hver side i build time**. Dette HTML er så genbrugt ved hver request, hvilket optimerer loading tiden fordi html allerede er genereret og klar til servering. Dette er også den mest optimale måde for SEO da den så er klar til at blive indexeret af webcrawlers.
 
-and this by using
+#### Server-Side Rendering
 
-- **Compilation** happens during development and as a part of the build step.
+Med SSR renderes siderne på serveren, får søgemaskiner adgang til det fulde indhold fra starten. Dette forbedrer SEO sammenlignet med client-side rendering, hvor indholdet renderes i brugerens browser.
+[getStaticProps](../q07/nextjs-blog/pages/posts/[id].js) 
+kan blive brugt til at fetche extern data ved build time og sender det til page som en props. Dette kan bruges for sider som skal hente extern data men ikke skal hente det ved en user request time. Hvis data skal opdateret så er dette ikke en mulighed.
+Dog giver dette en langsommere load time og en langsommere TimeToFirstByte ( TTFB).
 
-- **Minifying** is the process of removing unnecessary characters from the code like whitespace, comments, indents and line breaks. This reduces the size of the code and improves the application's performance.
-
-- **Bundling** is the process of combining multiple files into optimized bundles. This reduces the number of requests needed to load the application.
-
-#### Static generation
-
-Static generation is the default rendering method in Next. Pages that do not need to fetch external data will automatically be statically generated at build time. It **generates HTML for each page at build time**. The HTML is then reused on each request. This is the fastest method because the HTML is already generated and ready to be served. It is also the best method for SEO because the HTML is already generated and can be indexed by search engines.
-
-[getStaticProps](../q07/nextjs-blog/pages/posts/[id].js) can be used to fetch external data at build time and send it to the page as props. This is useful for pages that need to fetch external data but do not need to fetch data at request time.
-
-Static gemeration is the best method for SEO because the HTML is already generated and can be indexed by search engines. But it is not always possible to use static generation. if Updated data is needed.
-
-#### Server-side rendering
-
-As Next.js is serverside Rendered it performs very well on SEO because the content is already rendered when the page is loaded. For crawlers this makes the page easy to read. And the content is already there. However this does give a slower first load time. and a slower TTFB. ( Time To First Byte )
 
 #### Client-side rendering
 
-Client-side rendering **generates HTML on the client**.  This gives fast TTBF and fast first load time. However this is not good for SEO because the content is not rendered when the page is loaded. This means that the crawlers will have a hard time reading the page.
+Client-side rendering **genererer HTML på klienten**. Dette giver hurtig TTBF og hurtig første indlæsningstid. Dog er dette ikke godt for SEO, fordi indholdet ikke er renderet, når siden indlæses. Dette betyder, at crawlers vil have svært ved at læse siden.
+
+#### Forbedring af Ydeevne
+
+- **Kompilering og Minificering:** Reducerer størrelsen af koden.
+- **Bundling:** Kombinerer filer for at minimere antallet af forespørgsler.
+
+Ved at bruge Next.js kan man levere hurtige, optimerede sider, der understøtter god SEO.
+
+
