@@ -5,6 +5,7 @@
 - 2. forklar de forskellige komponent typer i next og hvordan man ka mixe dem
 - 3. forklar hvordan App Router bruges og hvordan det er forskelligt fra Pages router.
 
+[npm run dev] i fitness-next
 
 ## 1. Next oversigt
 
