@@ -9,8 +9,8 @@ export type Skill = {
   name: string;
   desc: string;
 };
-
-const query = gql` query {
+// gql fra @apollo/client definerer GraphQL-forespørgsler.
+const query = gql` query { 
   class {
     name
   }
@@ -35,7 +35,7 @@ export default async function Page() {
   //   }, 1000);
   //   return () => clearInterval(interval);
   // }, []);
-  const client = getClient();
+  const client = getClient(); // funktionen er en instans af ApolloClient(grapgql-client)
 
   const { data } = await client.query({ query ,     
     context: {
