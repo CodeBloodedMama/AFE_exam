@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/AFE-Eksamen/q09/reactgraphql/static/css/main.92337f2c.css",
+    "main.js": "/AFE-Eksamen/q09/reactgraphql/static/js/main.3019e476.js",
+    "static/js/787.0f5e7956.chunk.js": "/AFE-Eksamen/q09/reactgraphql/static/js/787.0f5e7956.chunk.js",
+    "index.html": "/AFE-Eksamen/q09/reactgraphql/index.html",
+    "main.92337f2c.css.map": "/AFE-Eksamen/q09/reactgraphql/static/css/main.92337f2c.css.map",
+    "main.3019e476.js.map": "/AFE-Eksamen/q09/reactgraphql/static/js/main.3019e476.js.map",
+    "787.0f5e7956.chunk.js.map": "/AFE-Eksamen/q09/reactgraphql/static/js/787.0f5e7956.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.92337f2c.css",
+    "static/js/main.3019e476.js"
+  ]
+}
