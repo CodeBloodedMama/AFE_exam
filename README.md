@@ -1,4 +1,7 @@
 # AFE-Eksamen
+### CodeBloodedMama 
+### aka: Elisabeth Lennert
+### studienummer: 202100064
 
 ## [Spørgsmål 01 – Angular generelt](./q01/README.md)
 
