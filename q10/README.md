@@ -8,6 +8,11 @@
 - Hvordan kan Lit hjælpe med at bygge webkomponenter?
 - Diskuter fordele og ulemper ved native webkomponenter.
 
+
+#### cd q10/carousel-project/src
+#### npm install http-server 
+#### http-server
+
 ## Intro: Hvad er native webkomponent
 - Native webkomponenter er lowlevel, selvstændige, genanvendelige moduler, der bruger standard webteknologier. De arbejder på tværs af moderne browsere uden behov for eksterne biblioteker eller frameworks.
 
