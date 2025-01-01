@@ -10,6 +10,8 @@
 - Explain how to protect routes with guards
 - Explain why and how to use Server-Side Rendering (SSR)
 
+( ng serve -o)
+
 ## Routing and module routing
 
 Single page applications are very useful as they allow the user to only load what is needed. Not only does this improve the user experience but it is also good for performance.

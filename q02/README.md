@@ -6,6 +6,8 @@
 - Explain reactive programming using RxJS
 - Explain how network communication is done in Angular according to best practices (use of HttpClientModule)
 
+(ng serve)
+
 ## Reactive programming using RxJS
 
 Reactive extensions for JavaScript (RxJS) is a library for reactive programming using observables that makes it easier to compose asynchronous code.

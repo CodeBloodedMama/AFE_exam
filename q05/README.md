@@ -5,6 +5,8 @@
 - Explain and discuss responsive web design (Flexbox, Grid and media queries)
 - Explain how third-party libraries can be used to develop web applications (examples: NgRx, Tailwind, and Angular Material)
 
+(ng  serve)
+
 ## Responsive web design
 
 Responsive web design is a way to make web applications look good on both mobile and desktop devices. Examples that can help making a responsive web design are `Flexbox`, `Grid`, and `media queries`.
