@@ -1,88 +1,159 @@
-# Q03 Routing and SSR
 
-<!-- References to code will be made in markdown by using: See more in line XX in [name of snippet]("PATH_TO_FILE") -->
+# Q3: Routing og SSR i Angular
 
-**Questions:**
+---
 
-- Explain how routing works in Angular
-- Explain module routing and lazy-loading
-- Explain how to get route information in the navigated to component
-- Explain how to protect routes with guards
-- Explain why and how to use Server-Side Rendering (SSR)
+## **Routing og Modul Routing**
 
-( ng serve -o)
+Single Page Applications (SPA) er nyttige, fordi de giver brugeren mulighed for kun at loade det nødvendige. Dette forbedrer både brugeroplevelsen og applikationens ydeevne.
 
-## Routing and module routing
+Routing bruges i Angular til at navigere mellem forskellige komponenter og skabe en SPA med flere visninger.
 
-Single page applications are very useful as they allow the user to only load what is needed. Not only does this improve the user experience but it is also good for performance.
+Angular tilbyder en kraftfuld måde at håndtere routing på ved hjælp af **RouterModule** og **RouterLink-direktiv**. RouterModule bruges til at konfigurere routeren, og RouterLink bruges til at navigere til en specifik rute.
 
-Routing is the process of navigating between different components. It is used to create a single page application (SPA) with multiple views.
+### **Routing i Angular**
 
-Angular has a powerful module used to route between different components.
+Routing i Angular bruger en "first match wins"-strategi, hvilket betyder, at mere specifikke ruter skal placeres før mindre specifikke ruter. Du kan tilføje en RouterLink-direktiv for at linke til en rute.
 
-Routing in Angular is done by using the RouterModule and the RouterLink directives. The RouterModule is used to configure the router and the RouterLink is used to navigate to a specific route.
+**Eksempel**:
+- **Fil**: [`src/app/pick/pick.component.html`](./src/app/pick/pick.component.html)
+- **Linjer**: 4-9
+  ```html
+  <a routerLink="/home">Home</a>
+  <a routerLink="/about">About</a>
+  ```
 
-The route uses a first match wins strategy which means that more specific routes should be placed before less specific routes. You simply add a RouterLink directive to link to a route.
+Det er vigtigt at sikre, at ruter defineret med RouterLink-direktivet er angivet i RoutingModule.
 
-See more in line 4-9 in [Router directive](./src/app/pick/pick.component.html)
+**Eksempel**:
+- **Fil**: [`src/app/app-routing.module.ts`](./src/app/app-routing.module.ts)
+- **Linjer**: 16-19
+  ```typescript
+  const routes: Routes = [
+    { path: 'home', component: HomeComponent },
+    { path: 'about', component: AboutComponent }
+  ];
+  ```
 
-You have to be sure that the routes you have specified with the RouterLink directive are defined in the RoutingModule.
+### **Intern og Ekstern Router**
+To routere kan bruges: en ekstern router til hele applikationen og en intern router til lazy-loaded moduler.
 
-See more in line 16-19 in [Defining routes](./src/app/app-routing.module.ts)
+**Eksempel**:
+- **Fil**: [`src/app/lazy/lazy-routing.module.ts`](./src/app/lazy/lazy-routing.module.ts)
+- **Linjer**: 7-11
+  ```typescript
+  const routes: Routes = [
+    { path: '', component: LazyComponent }
+  ];
+  ```
 
-2 routers have been created where one is used for the app and one is used for the lazy loaded module. This means that there is a internal router and a external router. The internal router is used for the lazy loaded module and the external router is used for the app.  
+Wildcard-ruter kan bruges til at håndtere ikke-eksisterende ruter.
 
-See more in line 7-11 in [Internal routing](./src/app/lazy/lazy-routing.module.ts)
+**Eksempel**:
+- **Fil**: [`src/app/app-routing.module.ts`](./src/app/app-routing.module.ts)
+- **Linje**: 27
+  ```typescript
+  { path: '**', component: PageNotFoundComponent }
+  ```
 
-You can also define wildcard routes to handle routes that do not exist.
+---
 
-See more in line 27 in [Wildcard routes](./src/app/app-routing.module.ts)
+## **Lazy-loading**
 
-## Lazy-loading
+Angular indlæser som standard alle moduler ved applikationsstart, hvilket kan føre til ydeevneproblemer. Lazy-loading løser dette ved kun at loade moduler, når de er nødvendige.
 
-Modules are early loaded by default. This means that all modules are loaded when the application is loaded. This is not optimal as it can lead to performance issues.
+Lazy-loading konfigureres i routeren ved hjælp af `loadChildren`-egenskaben.
 
-Lazy-loading is a technique that allows you to load modules only when they are needed. You configure routes to only load when needed. Since the bundle size is smaller on the initial load it will improve the user experience significantly. Lazy loading in the router is implemented by using the loadChildren property.
+**Eksempel**:
+- **Fil**: [`src/app/app-routing.module.ts`](./src/app/app-routing.module.ts)
+- **Linje**: 13
+  ```typescript
+  { path: 'lazy', loadChildren: () => import('./lazy/lazy.module').then(m => m.LazyModule) }
+  ```
 
-See more in line 13 in [Lazy-loading](./src/app/app-routing.module.ts)
+---
 
-## Route information in the navigated to component
+## **Ruteinformation i den Navigerede Komponent**
 
-In order to access route information in the navigated to component you need to inject the ActivatedRoute service in the constructor of the component. The ActivatedRoute service contains information about the route.
+For at få adgang til ruteinformation i en komponent kan du injicere `ActivatedRoute`-servicen i komponentens konstruktør. `ActivatedRoute` indeholder detaljer om ruten.
 
-See more in line 12 in [ActivatedRoute](./src/app/number/number.component.ts)
+**Eksempel**:
+- **Fil**: [`src/app/number/number.component.ts`](./src/app/number/number.component.ts)
+- **Linje**: 12
+  ```typescript
+  constructor(private route: ActivatedRoute) {}
+  ```
 
-For applications where you need to know where you are in the specific component this can be useful. In our case we simply print the number of the route in the component.
+I visningen kan vi vise ruteinformationen.
 
-See more in line 4 in [Route information in the navigated to component](./src/app/number/number.component.html)
+**Eksempel**:
+- **Fil**: [`src/app/number/number.component.html`](./src/app/number/number.component.html)
+- **Linje**: 4
+  ```html
+  <p>Route number: {{ route.snapshot.params['id'] }}</p>
+  ```
 
-## Route guards
+---
 
-Route guards are used to prevent unauthorized users from accessing certain routes. There are four types of route guards: CanActivate, CanActivateChild, CanDeactivate and CanLoad. CanActivate is used to prevent unauthorized users from accessing a route. CanActivateChild is used to prevent unauthorized users from accessing a child route. CanDeactivate is used to prevent users from leaving a route. CanLoad is used to prevent unauthorized users from loading a module.
+## **Route Guards**
 
-The guard can either be synchronous or asynchronous. A synchronous guard returns a boolean value. An asynchronous guard returns an observable or a promise.
+Route guards bruges til at forhindre uautoriserede brugere i at få adgang til bestemte ruter. Der er fire typer:
+1. **CanActivate**: Forhindrer uautoriserede brugere i at tilgå en rute.
+2. **CanActivateChild**: Forhindrer uautoriserede brugere i at tilgå børneruter.
+3. **CanDeactivate**: Forhindrer brugere i at forlade en rute.
+4. **CanLoad**: Forhindrer uautoriserede brugere i at loade et modul.
 
-When implementing a guard you need to implement the CanActivate interface. The CanActivate interface contains a canActivate method that returns a boolean value, an observable or a promise. The canActivate method takes two parameters: the activated route snapshot and the router state snapshot. The activated route snapshot contains information about the route. The router state snapshot contains information about the router. You can also chose to implement the CanActivateChild, CanDeactivate or CanLoad interface.
+Guard-logikken implementeres ved at implementere det relevante interface (fx `CanActivate`).
 
-See more in line 4 in [Route guards](./src/app/pick.guard.ts)
+**Eksempel**:
+- **Fil**: [`src/app/pick.guard.ts`](./src/app/pick.guard.ts)
+- **Linje**: 4
+  ```typescript
+  export class PickGuard implements CanActivate {
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+      return confirm('Are you sure you want to access this route?');
+    }
+  }
+  ```
 
-In order to use a guard in the router you need to add it to the canActivate, canActivateChild, canDeactivate or canLoad property.
+Guarden bruges i routeren.
 
-See more in line 24 in [Using guards in the router](./src/app/app-routing.module.ts)
+**Eksempel**:
+- **Fil**: [`src/app/app-routing.module.ts`](./src/app/app-routing.module.ts)
+- **Linje**: 24
+  ```typescript
+  { path: 'protected', component: ProtectedComponent, canActivate: [PickGuard] }
+  ```
 
-## Server-Side Rendering (SSR)
+---
 
-Server-Side Rendering (SSR) is a technique that allows you to render your application on the server instead of the client. This is useful for SEO and performance reasons as it allows the search engine to crawl your applications HTML.
+## **Server-Side Rendering (SSR)**
 
-### Pre-rendering
+Server-Side Rendering (SSR) er en teknik, hvor applikationen renderes på serveren i stedet for klienten. Dette forbedrer både SEO og ydeevnen.
 
-Pre-rendering allows you to run a client side application at build time to capture its state.
+### **Fordele ved SSR**
+1. **SEO**: Søgemaskiner kan nemt crawle server-genereret HTML.
+2. **Performance**: Hurtigere initial rendering, da serveren sender færdig HTML.
 
-### Rehydration
+### **Teknikker i SSR**
 
-Rehydration is the process of "booting up" JavaScript views on the client such that they use the server side generated HTML's DOM tree as well as the data.
+#### **Pre-rendering**
+Applikationen kører ved build-tid for at generere HTML og fange dens tilstand. Dette reducerer belastningen på serveren ved at levere statiske HTML-filer.
 
-### How to
+#### **Rehydrering**
+Rehydrering er processen, hvor klientens JavaScript "booter" og genbruger den servergenererede HTML. Dette betyder, at JavaScript genskaber event listeners og dataforbindelser baseret på den eksisterende DOM, uden at genindlæse hele siden. Dette gør SSR meget effektiv til interaktive applikationer.
 
-Add the ssr package `ng add @angular/ssr`
-Run `npm run dev:ssr` to start the app with server side rendering
+#### **Hydration**
+Hydration er en del af rehydreringen og refererer specifikt til genoprettelsen af applikationens tilstand på klienten. Det sikrer, at klientens JavaScript synkroniseres med den server-renderede HTML. Under hydration binder Angular alle komponenter og services til DOM'en og genopretter eventuelle interaktive elementer.
+
+---
+
+### **Sådan Implementeres SSR**
+1. Tilføj SSR-pakken:
+   ```bash
+   ng add @angular/ssr
+   ```
+2. Start applikationen med SSR:
+   ```bash
+   npm run dev:ssr
+   ```
