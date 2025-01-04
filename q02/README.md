@@ -1,117 +1,166 @@
-# Q02 Reactive programming
-<!-- References to code will be made in markdown by using: See more in line XX in [name of snippet]("PATH_TO_FILE") -->
+# Q02: Reactive Programming med RxJS og Netværkskommunikation i Angular
+- Forklar reaktiv programmering med RxJs
+- Forklar hvordan netværkskommunikation skal bruges jf. Angulars best practice med en HttpClientModule)
 
-**Questions:**
+- start app med ( ng serve)
+---
 
-- Explain reactive programming using RxJS
-- Explain how network communication is done in Angular according to best practices (use of HttpClientModule)
+## **Reactive Programming ved hjælp af RxJS**
 
-(ng serve)
+### **Hvad er Reactive Programming?**
+Reactive Programming er et programmeringsparadigme, der arbejder med **asynkrone datastrømme**. 
+Det er fordelagtigt da vi arbejder med
+netværksprotokolmer som er asynkrone.
+Med Reactive Extensions for JavaScript (RxJS) kan vi bruge **observables**, som er datastrømme, der udsender værdier over tid. 
+RxJS er ideelt til at håndtere asynkrone operationer, såsom API-kald og brugerinteraktioner(events), fordi det reducerer kompleksiteten af at arbejde med samtidige og dynamiske hændelser.
 
-## Reactive programming using RxJS
+---
 
-Reactive extensions for JavaScript (RxJS) is a library for reactive programming using observables that makes it easier to compose asynchronous code.
-Reactive programming is very useful when dealing with network protocols and requests since it is asynchronous by nature.
+### **Nøglebegreber i RxJS**
 
-### Observables
+#### **1. Observables**
+En **observable** repræsenterer en strøm af data, der kan udsende flere værdier over tid. 
+- **Lazy Execution**: De udfører først, når en **subscriber** opretter forbindelse.
+- **Typer**:
+  - **Hot observables**: Begynder at producere værdier, selv før der er en subscriber.
+  - **Cold observables**: Starter kun, når en subscriber forbinder sig.
 
-An observable is a collection of values over time. It can be used to handle asynchronous operations and events. Observables are lazy, meaning that they only execute when they have a subscriber.
+**Konvention**: Variabler, der er observables, navngives ofte med `$` som suffix.
 
-Hot observables are observables that are already producing values before a subscriber subscribes to it.
-Cold observables are observables that start producing values when a subscriber subscribes to it.
+**Eksempel fra handin**:
+- **Fil fra handIn**: [`src/app/services/credit-card.service.ts`](./src/app/services/credit-card.service.ts)
+- **Linje 39**: `getCards()` returnerer en observable, der henter data fra en backend:
+  ```typescript
+  getCards(): Observable<CreditCard[]> {
+    return this.http.get<CreditCard[]>(`${this.baseUrl}/cards`);
+  }
+  ```
+- Observable.Create() bruges til at oprette brugerdefineret observables.
+- .of() opretter en observable fra fasta værdier
 
-It is common to use the dollar sign ($) at the end of the variable name to indicate that it is an observable.
+---
 
-### Subscriptions
+#### **2. Subscriptions**
+En **subscription** forbinder en observer med en observable. Dette initierer datastrømmen. 
+Subscriptionen kan bruges til at afbryde forbindelsen og forhindre hukommelseslækager.
 
-A subscription is a connection between an observable and an observer. It is created by calling the subscribe method on an observable. A subscription can be used to unsubscribe from an observable.
+**Eksempel fra handIn**:
+- **Fil**: [`src/app/card-details/card-details.component.ts`](./src/app/card-details/card-details.component.ts)
+- **Linje 102-103**: Abonnerer på `getTransactions()` for at hente transaktioner:
+  ```typescript
+  this.creditCardService.getTransactions(cardNumber).subscribe({
+    next: (transactions) => this.transactions = transactions,
+    error: (err) => console.error(err),
+  });
+  ```
+- subscriptions er altså abonneneter der starter dataflow og tillader reaktioner på data
 
-### Operators
+---
 
-Operators are functions that can be used to manipulate the data emitted by an observable. There are two types of operators: pipeable operators and creation operators. Pipeable operators are used to manipulate the data emitted by an observable. Creation operators are used to create new observables.
-Operators are simply put, functions.
+#### **3. RxJs Operators**
+Operators er funktioner, der manipulerer datastrømme. De bruges enten til at oprette nye observables (**creation operators**) eller ændre eksisterende (**pipeable operators**).
 
-There are many operators but here are some of the most common ones:
+- **Eksempel fra handIn**: Brug af `map` til at fordoble værdierne i en liste:
+  ```typescript
+  const array = [10, 20, 30];
+  const result = from(array).pipe(map(x => x * 2));
+  result.subscribe(x => console.log(x)); // Logs: 20, 40, 60
+  ```
+- I projektet kunne `map` bruges til at formatere transaktioner, før de præsenteres.
 
-- of
+- der er 4 hovedtyper: transformation (indeholder map og filter), kombination(merge, concat,combineLatest),
+utility(tap til sideeffekter uden ar ændre data, take som begrænser antal værdier til en observable og debounceTime som ignorere værdier der kommer huerift efter hiananden), 
+samt error handling ( catchError og retry)
 
-```typescript
-import { of } from 'rxjs';
- 
-of(1, 2, 3).subscribe(
-  next => console.log('next:', next),
-  err => console.log('error:', err),
-  () => console.log('the end'),
-);
- 
-// Logs:
-// next: 1
-// next: 2
-// next: 3
-// the end
-```
+---
 
-- from
+### **Fordele ved Reactive Programming**
+1. **Asynkronitet**: Gør det nemt at håndtere samtidige datastrømme.
+2. **Effektivitet**: Reducerer kompleksiteten i netværks- og eventhåndtering.
+3. **Modularitet**: Operators gør det nemt at genbruge logik.
 
-```typescript
-import { from } from 'rxjs';
- 
-const array = [10, 20, 30];
-const result = from(array);
- 
-result.subscribe(x => console.log(x));
- 
-// Logs:
-// 10
-// 20
-// 30
-```
+---
 
-- map with from (pipeable operator)
+## **Netværkskommunikation i Angular**
 
-```typescript
-import { from } from 'rxjs';
-import { map } from 'rxjs/operators';
+### **HttpClientModule**
+Angulars **HttpClientModule** er et kraftfuldt værktøj til at håndtere HTTP-anmodninger. Det fungerer som et wrapper-lag omkring browserens `XMLHttpRequest`-API og gør det nemt at udføre asynkrone operationer.
 
-const array = [10, 20, 30];
-const result = from(array).pipe(map(x => x * 2));
+---
 
-result.subscribe(x => console.log(x));
+### **Hvordan bruges HttpClientModule?**
 
-// Logs:
-// 20
-// 40
-// 60
-```
+#### **1. Opsætning**
+For at bruge `HttpClient`, skal `HttpClientModule` importeres i `AppModule`.
 
-See example in line 23 in [Card service](./src/app/card.service.ts)
+**Eksempel**:
+- **Fil**: [`src/app/app.module.ts`](./src/app/app.module.ts)
+- **Linje 13**:
+  ```typescript
+  import { HttpClientModule } from '@angular/common/http';
+  @NgModule({
+    imports: [HttpClientModule]
+  })
+  ```
 
-## Network communication
+#### **2. Anvendelse af HttpClient**
+`HttpClient` kan injiceres i services for at centralisere al API-logik.
 
-All webaps need to communicate with a server to get data. Angular provides the HttpClientModule to make it easier to communicate with a server. The HttpClientModule is a wrapper around the XMLHttpRequest interface. It is used to make HTTP requests to a server.
+**Eksempel**:
+- **Fil**: [`src/app/services/credit-card.service.ts`](./src/app/services/credit-card.service.ts)
+- **Linje 37**:
+  ```typescript
+  private http = inject(HttpClient);
+  ```
 
-### HttpClientModule
+#### **3. Integration med RxJS**
+Alle HTTP-anmodninger returnerer observables. Dette gør det muligt at anvende RxJS operators som `map`, `filter` og `catchError`.
 
-The HttpClient is used to make HTTP requests to a server. It wraps requests in observables and provides methods for HTTP requests. The HttpClientModule is used by injecting the HttpClient into a component or service.
+**Eksempel**:
+- **Fil**: [`src/app/card-details/card-details.component.ts`](./src/app/card-details/card-details.component.ts)
+- **Linje 103**: `getTransactions()` returnerer data som observable:
+  ```typescript
+  this.creditCardService.getTransactions(cardNumber).pipe(
+    map(transactions => transactions.filter(t => t.amount > 0))
+  ).subscribe(filteredTransactions => this.transactions = filteredTransactions);
+  ```
 
-When using the HttpClientModule you can simply import it into your component and start using the endpoints.
+---
 
-See more in line 16 in [Card service injection](./src/app/app.component.ts)
+### **Interceptors**
+En **interceptor** er en service, der interagerer med HTTP-anmodninger og -svar. Det bruges til at tilføje fælles logik som autorisationstokens eller fejlhåndtering.
 
-The HttpClient is used in combination with RxJS operators to filter and transform the data received from the server. It is initiated with `subscribe()` or the `async` pipe.
+**Eksempel**:
+- **Fil**: [`src/app/interceptor.ts`](./src/app/interceptor.ts)
+- **Linje 14**:
+  ```typescript
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const cloned = req.clone({ headers: req.headers.set('Authorization', 'Bearer TOKEN') });
+    return next.handle(cloned);
+  }
+  ```
 
-See more in line 6 in [App.component.html](./src/app/app.component.html)
+---
 
-### Interceptors
+### **Fejlhåndtering**
+Fejl kan håndteres med RxJS-operatoren `catchError`. Dette sikrer, at brugeren ikke ser en brudt applikation, hvis der opstår fejl.
 
-When making http request to a server it is common to add headers to the request. This can be done by using interceptors. Interceptors are used to modify HTTP requests before they are sent to the server. They are also used to modify HTTP responses before they are sent to the application. So if you have an application with authentication you can use an interceptor to add the authentication token to the request. This makes it simple for the developer to create new requests without having to worry about adding the authentication token to the request.
+**Eksempel**:
+- **Fil**: [`src/app/card-details/card-details.component.ts`](./src/app/card-details/card-details.component.ts)
+- **Linje 45**:
+  ```typescript
+  this.creditCardService.getTransactions(cardNumber).pipe(
+    catchError(err => {
+      console.error('Fejl ved hentning:', err);
+      return of([]); // Returner en tom liste som fallback
+    })
+  ).subscribe();
+  ```
 
-You can also add other stuff to the request such as meta data or other headers.
+---
 
-See more in line 14 in [Interceptor](./src/app/request-logger.interceptor.ts) and line 13 in [App.module.ts](./src/app/app.module.ts)
-
-### Error handling
-
-Sine not all HttpRequests are succeful you might want to handle errors. This can be done by using the `catchError()` operator. It is used to catch errors and handle them. It is used in combination with the `throwError()` operator to throw an error.
-
-See more in line 45 in [Error handling](./src/app/card.service.ts)
+### **Fordele ved Angulars Netværkskommunikation**
+1. **Struktur**: Brug af services og DI centraliserer HTTP-logik.
+2. **Reaktivitet**: Observables gør det nemt at reagere på dataændringer.
+3. **Genanvendelighed**: Interceptors og RxJS operators gør koden modulær og fleksibel.
+4. **Sikkerhed**: Interceptors gør det nemt at implementere fælles sikkerhedslogik.
