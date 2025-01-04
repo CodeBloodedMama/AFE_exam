@@ -1,62 +1,142 @@
-# Q05 Styling and third-party libraries
 
-**Questions:**
+# Q05 Styling og tredjepartsbiblioteker
 
-- Explain and discuss responsive web design (Flexbox, Grid and media queries)
-- Explain how third-party libraries can be used to develop web applications (examples: NgRx, Tailwind, and Angular Material)
+**Spørgsmål:**
 
-(ng  serve)
+- Forklar og diskuter responsivt webdesign (Flexbox, Grid og media queries)
+- Forklar, hvordan tredjepartsbiblioteker kan bruges til at udvikle webapplikationer (eksempler: NgRx, Tailwind og Angular Material)
 
-## Responsive web design
+**Kommando til at starte applikationen:**
+```bash
+ng serve
+```
 
-Responsive web design is a way to make web applications look good on both mobile and desktop devices. Examples that can help making a responsive web design are `Flexbox`, `Grid`, and `media queries`.
+---
+
+## 1.Responsivt webdesign
+
+Responsivt webdesign handler om at sikre, at webapplikationer fungerer og ser godt ud på både mobile enheder og desktop. Dette opnås gennem brugen af **Flexbox**, **Grid**, og **media queries**.
 
 ### [Flexbox](./src/styles.scss)
 
-`Flexbox` is a way to order elements automatically. There are multiple extra options that can be used to change the layout of the elements. Examples are `display:flex`, `flex-wrap: wrap`, and `flex-direction: row | column`.
+Flexbox er en CSS-layoutmodel, der bruges til at arrangere elementer dynamisk og fleksibelt i én dimension (enten horisontalt eller vertikalt). Flexbox gør det muligt at håndtere pladsfordeling og justering uden brug af komplekse CSS-regler.
 
-### [Grid and media queries](./src/app/grid/grid.component.scss)
+**Nøgleegenskaber:**
+- **`display: flex`**: Aktiverer flex-containeren.
+- **`flex-wrap`**: Tillader elementer at bryde til en ny linje.
+- **`justify-content`**: Justerer elementer langs hovedaksen (f.eks. `space-between` eller `center`).
+- **`align-items`**: Justerer elementer langs krydsaksen (f.eks. `flex-start` eller `center`).
 
-`Grid` is a way to order elements in a grid defined by the parent elements `grid-template` option. `Grid` alone is not very responsive though, so `media queries` can be used to make the grid responsive by changing the grid layout depending on the screen size. `media queries` can be used for a range of things, not just grid layouts. In the example a `media query` is also used to change a field depedning on the OS theme.
+**Eksempel:**
+```css
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+```
 
-## Third-party libraries
+---
 
-Third-party libraries can be used to style web applications. Examples of third-party libraries for styling are Tailwind, Angular Material, and NgRx.
+### [Grid og Media Queries](./src/app/grid/grid.component.scss)
 
-### [Tailwind](./src/app/tailwind/tailwind.component.html)
+Grid er en kraftfuld layoutmodel, der håndterer både rækker og kolonner. Med **CSS Grid** kan du definere layoutet med rækker og kolonner og styre placeringen af elementer i gitteret.
 
-Tailwind is a CSS library that can be used to style web applications. Tailwind is very customizable and can be used to make a web application look exactly how you want it to look. Tailwind styling is applied by adding classes to the HTML elements. Each of the classes are shorthands for CSS properties.
+**Nøgleegenskaber:**
+- **`grid-template-columns`**: Definerer antallet af kolonner.
+- **`grid-gap`**: Tilføjer mellemrum mellem rækker og kolonner.
 
-### [Angular Material](./src/app/material/material.component.html)
+**Eksempel:**
+```css
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 20px;
+}
+```
 
-Angular Material is a styling library that comes with a range of pre-styled components. It is possible to choose a pre-defined theme or make a custom theme and color palette. Angular Material is very easy to use, but not as customizable as Tailwind.
+**Media Queries** bruges sammen med Grid for at gøre layoutet responsivt. De muliggør ændringer af layoutet afhængigt af skærmstørrelsen.
 
-### NgRx
+**Eksempel med Media Queries:**
+```css
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+```
 
-NgRx is a state management library for Angular. It extends Redux with side effects. NgRx is very powerful, but also very complex, can be hard to learn and requires a lot of setup and code.
+---
 
-You should consider using a state management system if you have these challenges:
+## 2. Tredjepartsbiblioteker
 
-- S - Shared State is accessed by many components and services
-- H - Hydrated State that is persisted and hydrated from storage
-- A - Available State that needs to be available when re-entering routes
-- R - Retrieved State that needs to be retrieved with a side effect
-- I - Impacted State that is impacted by actions from other sources
+Tredjepartsbiblioteker forenkler udviklingen ved at tilbyde færdige værktøjer og komponenter, som kan bruges direkte i Angular-projekter. Eksempler inkluderer **Tailwind**, **Angular Material** og **NgRx**.
+
+---
+
+### **[Tailwind CSS](./src/app/tailwind/tailwind.component.html)**
+
+Tailwind er et utility-first CSS-framework, der gør det muligt at style direkte i HTML med klasser. Det er meget fleksibelt og understøtter avanceret tilpasning via en konfigurationsfil.
+
+**Fordele:**
+- Hurtig styling uden at skrive separat CSS.
+- Meget tilpasselig og nem at integrere.
+- Effektiv håndtering af responsivt design.
+
+**Eksempel:**
+```html
+<button class="bg-blue-500 text-white font-bold py-2 px-4 rounded">
+  Klik her
+</button>
+```
+
+---
+
+### **[Angular Material](./src/app/material/material.component.html)**
+
+Angular Material er et UI-bibliotek baseret på Material Design. Det indeholder præ-stylet komponenter som knapper, dialogbokse og datatabeller.
+
+**Fordele:**
+- Hurtig implementering af komponenter.
+- Understøttelse af temaer (f.eks. brugerdefinerede farvepaletter).
+- Indbyggede responsivitetsegenskaber.
+
+**Eksempel:**
+```html
+<mat-toolbar color="primary">
+  Angular Material Toolbar
+</mat-toolbar>
+```
+
+---
+
+### **NgRx (State Management)**
+
+NgRx er et tilstandsmanagementbibliotek, der bruges til at håndtere komplekse applikationstilstande i Angular-projekter. Det er baseret på Redux og understøtter sideeffekter som asynkrone API-kald.
+
+#### Hvornår skal du bruge NgRx?
+- Når mange komponenter deler data (Shared State).
+- Når data skal gemmes og gendannes (Hydrated State).
+- Når data skal være tilgængelige ved navigering (Available State).
+- Når data kræver sideeffekter for at blive hentet (Retrieved State).
+
+#### Komponenter i NgRx:
+1. **Store**: Central kilde til applikationens tilstand.
+2. **Actions**: Hændelser, der ændrer tilstanden.
+3. **Reducers**: Pure functions, der definerer tilstandsovergange.
+4. **Effects**: Håndterer sideeffekter som HTTP-anmodninger.
+
+**Eksempel:**
+```typescript
+import { createAction, props } from '@ngrx/store';
+
+export const addItem = createAction('[Cart] Add Item', props<{ item: string }>());
+```
+
+---
+
+### Konklusion
+
+Responsivt design opnås gennem teknologier som **Flexbox**, **Grid**, og **Media Queries**, mens tredjepartsbiblioteker som **Tailwind**, **Angular Material** og **NgRx** gør udviklingen hurtigere og mere effektiv. Brug disse værktøjer til at skabe moderne, skalerbare og brugervenlige webapplikationer.
 
 ![NgRx](./images/ngrx.svg)
-
-#### Store
-
-The store is the single source of truth for the application state. The store is immutable and can only be changed by dispatching actions.
-
-#### Actions
-
-Actions define unique events that are used to change the state of the store. Actions are dispatched by components and handled by reducers.
-
-#### Reducers
-
-Reducers are responsible for handling state transitions in applications. Reducers are pure functions that always prooduce the same output for a given input. They handle the state transitions by taking the current state and an action as input and produce a new state as output.
-
-#### Effects
-
-Effects are used for side-effects like HTTP requests, timers, and local storage. They isolate the side-effects, allowing for more pure functions. Effects communicate with services. Effects may produce new Actions.
