@@ -113,6 +113,7 @@ Angular Material er et UI-bibliotek baseret på Material Design. Det indeholder 
 ### **NgRx (State Management)**
 
 NgRx er et tilstandsmanagementbibliotek, der bruges til at håndtere komplekse applikationstilstande i Angular-projekter. Det er baseret på Redux og understøtter sideeffekter som asynkrone API-kald.
+![NgRx](./images/ngrx.svg)
 
 #### Hvornår skal du bruge NgRx?
 - Når mange komponenter deler data (Shared State).
@@ -139,4 +140,3 @@ export const addItem = createAction('[Cart] Add Item', props<{ item: string }>()
 
 Responsivt design opnås gennem teknologier som **Flexbox**, **Grid**, og **Media Queries**, mens tredjepartsbiblioteker som **Tailwind**, **Angular Material** og **NgRx** gør udviklingen hurtigere og mere effektiv. Brug disse værktøjer til at skabe moderne, skalerbare og brugervenlige webapplikationer.
 
-![NgRx](./images/ngrx.svg)
