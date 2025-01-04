@@ -18,8 +18,7 @@ ng serve -o
 
 ---
 
-## ** 1. Handling Forms i Angular**
-
+## 1. Handling Forms i Angular
 At håndtere brugerinput er en af de vigtigste dele af en webapplikation. Angular tilbyder to måder at håndtere forms på: **template-driven forms** og **reactive forms**. 
 
 - **Template-driven forms** er baseret på direktiver og bruges ofte til simple formularer.
@@ -31,7 +30,7 @@ Valget mellem de to afhænger af use-casen:
 
 ---
 
-## **Template-driven Forms**
+## 1.1 Template-driven Forms
 
 Template-driven forms oprettes med direktiver direkte i HTML-skabelonen. Formularvalidering og datahåndtering sker også i template, og data sendes til komponentklassen ved indsendelse OnSubmit.
 
@@ -70,7 +69,7 @@ Når brugeren klikker på "Submit", kaldes `onSubmit()`-metoden i komponentklass
 
 ---
 
-## **Reactive Forms**
+## 2.Reactive Forms
 
 Reactive forms bruger en **model-driven tilgang**, hvor formularens logik defineres i komponentklassen. 
 De tilbyder synkron adgang til data, immutabilitet og tracking via observables.
@@ -107,7 +106,7 @@ Reactive forms giver mulighed for at bruge funktioner til validering:
 
 ---
 
-## ** 4. Key Differences mellem Form Typer**
+## 3. Key Differences mellem Form Typer
 
 | Egenskab             | Template-driven Forms       | Reactive Forms         |
 |----------------------|-----------------------------|------------------------|
@@ -118,7 +117,13 @@ Reactive forms giver mulighed for at bruge funktioner til validering:
 
 ---
 
-## **5. Testing Angular Apps**
+## 4. Testing Angular Apps
+
+
+
+
+
+---
 
 Angular tilbyder testværktøjer i `@angular/core/testing`. Det centrale værktøj er **TestBed**, som bruges til at konfigurere og teste Angular-komponenter og services.
 
