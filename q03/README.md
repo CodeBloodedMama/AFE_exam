@@ -3,17 +3,47 @@
 
 ---
 
-## **Routing og Modul Routing**
+**Questions:**
 
-Single Page Applications (SPA) er nyttige, fordi de giver brugeren mulighed for kun at loade det nødvendige. Dette forbedrer både brugeroplevelsen og applikationens ydeevne.
+- 1. Forklar, hvordan routing fungerer i Angular.
+- 2. Forklar lazy-loading af components
+- 3. Forklar, hvordan man får ruteinformation i den navigerede komponent.
+- 4. Forklar, hvordan man beskytter ruter med guards.
+- 5. Forklar, hvorfor og hvordan man bruger Server-Side Rendering (SSR).
+
+**Run Command:**
+
+For at starte applikationen:
+```bash
+ng serve -o
+```
+
+---
+
+## **1. Routing og Modul Routing**
+angular routing er en simpel collection der inderholder to ting(.ts):
+- paths
+- loading af hvilke komponenter der skal loades når url'en er kaldt.
+
+disse implementeres i .HTML med routerLink og router-outlet.
 
 Routing bruges i Angular til at navigere mellem forskellige komponenter og skabe en SPA med flere visninger.
 
-Angular tilbyder en kraftfuld måde at håndtere routing på ved hjælp af **RouterModule** og **RouterLink-direktiv**. RouterModule bruges til at konfigurere routeren, og RouterLink bruges til at navigere til en specifik rute.
+Single Page Applications (SPA) er nyttige, fordi en spa er hvor mainUI bliver loaded 1 gang 
+ogsp bliver de efterspurgte userinteefaces loaded når det ee nødvendigt.
+First load er fx header, footer og homepage. 
+Dette forbedrer både brugeroplevelsen og applikationens ydeevne.
+
+
+Angular håndtere routing på ved hjælp af **RouterModule** og **RouterLink-direktiv**. 
+RouterModule bruges til at konfigurere routeren, og RouterLink bruges til at navigere til en specifik rute.
+i HTML SKAL der derfor defineres en <router-outlet> som er en placeholder for de synamiske pages bliver loaded ind i og ovenfor dette skal der
+være defineret '[routerLink]="Home">Home<\a>'
 
 ### **Routing i Angular**
 
-Routing i Angular bruger en "first match wins"-strategi, hvilket betyder, at mere specifikke ruter skal placeres før mindre specifikke ruter. Du kan tilføje en RouterLink-direktiv for at linke til en rute.
+Routing i Angular bruger en "first match wins"-strategi, hvilket betyder, at mere specifikke ruter skal placeres før mindre specifikke ruter. 
+man kan tilføje en RouterLink-direktiv for at linke til en rute.
 
 **Eksempel**:
 - **Fil**: [`src/app/pick/pick.component.html`](./src/app/pick/pick.component.html)
@@ -38,6 +68,7 @@ Det er vigtigt at sikre, at ruter defineret med RouterLink-direktivet er angivet
 ### **Intern og Ekstern Router**
 To routere kan bruges: en ekstern router til hele applikationen og en intern router til lazy-loaded moduler.
 
+Her et intern router:
 **Eksempel**:
 - **Fil**: [`src/app/lazy/lazy-routing.module.ts`](./src/app/lazy/lazy-routing.module.ts)
 - **Linjer**: 7-11
@@ -48,20 +79,22 @@ To routere kan bruges: en ekstern router til hele applikationen og en intern rou
   ```
 
 Wildcard-ruter kan bruges til at håndtere ikke-eksisterende ruter.
-
+Dette er en ekstern router. 
 **Eksempel**:
 - **Fil**: [`src/app/app-routing.module.ts`](./src/app/app-routing.module.ts)
 - **Linje**: 27
   ```typescript
   { path: '**', component: PageNotFoundComponent }
   ```
-
 ---
 
-## **Lazy-loading**
+## **2. Lazy-loading**
+Lazy loading reducerer den initiale loadtime ved kun at hente moduler når det er nødvendigt.
+Komponenter skal derfor deles ind i moduler for at være lazy loading kombatible.
 
-Angular indlæser som standard alle moduler ved applikationsstart, hvilket kan føre til ydeevneproblemer. Lazy-loading løser dette ved kun at loade moduler, når de er nødvendige.
-
+Angular indlæser som standard alle moduler ved applikationsstart, hvilket kan skabe en lang 
+inital loading time. Dette afhjælpes ved lazy loading.
+Når en rute navigeres til, indlæses modulet dynamisk. 
 Lazy-loading konfigureres i routeren ved hjælp af `loadChildren`-egenskaben.
 
 **Eksempel**:
@@ -73,9 +106,10 @@ Lazy-loading konfigureres i routeren ved hjælp af `loadChildren`-egenskaben.
 
 ---
 
-## **Ruteinformation i den Navigerede Komponent**
+## **3. Ruteinformation i den Navigerede Komponent**
 
-For at få adgang til ruteinformation i en komponent kan du injicere `ActivatedRoute`-servicen i komponentens konstruktør. `ActivatedRoute` indeholder detaljer om ruten.
+For at få adgang til ruteinformation i en komponent kan du injicere `ActivatedRoute`-servicen i komponentens constructor. 
+`ActivatedRoute` indeholder detaljer om ruten.
 
 **Eksempel**:
 - **Fil**: [`src/app/number/number.component.ts`](./src/app/number/number.component.ts)
@@ -95,7 +129,7 @@ I visningen kan vi vise ruteinformationen.
 
 ---
 
-## **Route Guards**
+## **4. Route Guards**
 
 Route guards bruges til at forhindre uautoriserede brugere i at få adgang til bestemte ruter. Der er fire typer:
 1. **CanActivate**: Forhindrer uautoriserede brugere i at tilgå en rute.
@@ -127,9 +161,10 @@ Guarden bruges i routeren.
 
 ---
 
-## **Server-Side Rendering (SSR)**
+## **5.Server-Side Rendering (SSR)**
 
-Server-Side Rendering (SSR) er en teknik, hvor applikationen renderes på serveren i stedet for klienten. Dette forbedrer både SEO og ydeevnen.
+Server-Side Rendering (SSR) er en teknik, hvor applikationen renderes på serveren i stedet for klienten. 
+Dette forbedrer både SEO og ydeevnen.
 
 ### **Fordele ved SSR**
 1. **SEO**: Søgemaskiner kan nemt crawle server-genereret HTML.
@@ -157,3 +192,5 @@ Hydration er en del af rehydreringen og refererer specifikt til genoprettelsen a
    ```bash
    npm run dev:ssr
    ```
+
+
