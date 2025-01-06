@@ -7,7 +7,6 @@ on:
       - q10
     paths:
       - 'q10/carousel-project/src/**'
-      - 'q10/gpt/**'
   pull_request:
     branches:
       - main
@@ -115,4 +114,4 @@ jobs:
         uses: thollander/actions-comment-pull-request@v2
         with:
           message: |
-            Deployed to https://ninjaneer127.github.io/AFE-Eksamen/${{ matrix.path }}/pr-${{ github.event.number }} 
+            Deployed to https://codebloodedmama.github.io/AFE_exam/${{ matrix.path }}/pr-${{ github.event.number }} 
