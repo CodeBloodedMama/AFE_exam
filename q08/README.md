@@ -25,11 +25,12 @@ SEO-måling fokuserer på trafikken: Hvor mange besøgende får din hjemmeside, 
 
 ### Sitemap  
 
-Et sitemap hjælper søgemaskinernes webcrawlere med at finde og indeksere alle sider på dit website. Et sitemap indeholder URL'er samt information som sidernes seneste opdateringsdato og prioritet. For eksempel har jeg oprettet et [sitemap](./../sitemap.xml) til mine GitHub-sider og de kan ses her 
+Et sitemap hjælper søgemaskinernes webcrawlere med at finde og indeksere alle sider på dit website. Et sitemap indeholder URL'er samt information som sidernes seneste opdateringsdato og prioritet. For eksempel har jeg oprettet et sidemap til mine GitHub-sider og de kan ses her:  [sitemap](./../sitemap.xml) 
 
 Et sitemap kan bruges i Google Search Console til at sikre, at Google hurtigt kan finde alle dine sider.
 
-Et sitemap kan bruges i Google Search Console til at sikre, at Google hurtigt kan finde alle dine sider.![Alt text](image-2.png)
+Et sitemap kan bruges i Google Search Console til at sikre, at Google hurtigt kan finde alle dine sider.
+
 
 ### Metaheader
 
