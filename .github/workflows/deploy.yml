@@ -1,40 +1,59 @@
-name: Deploy GitHub Pages with Sitemap
+name: Deploy Angular to GitHub Pages 📐 
 
 on:
   push:
     branches:
       - main
+    paths:
+      - 'q01/**'
+      - 'q02/**'
+      - 'q03/**'
+      - 'q04/**'
+      - 'q05/**'
+      - 'q06/**'
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
-  build:
+  build_deploy:
+    strategy:
+        fail-fast: false
+        matrix:
+          path: [q01, q02, q03, q04, q05, q06]
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16
+      - name: Check if Directory Exsist
+        run: |
+          if [ -d ${{ matrix.path }} ]; then
+            echo "Directory Exists - ${{ matrix.path }} continuing"
+          else
+            echo "Directory - ${{ matrix.path }} -  Does Not Exist - Exiting with Success"
+            exit 0
+          fi
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
 
-    - name: Generate Sitemap
-      run: |
-        echo '<?xml version="1.0" encoding="UTF-8"?>' > sitemap.xml
-        echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' >> sitemap.xml
-        echo '<url><loc>https://codebloodedmama.github.io/AFE_exam/q07/</loc><priority>1.0</priority></url>' >> sitemap.xml
-        echo '<url><loc>https://codebloodedmama.github.io/AFE_exam/q07/login</loc><priority>0.9</priority></url>' >> sitemap.xml
-        echo '<url><loc>https://codebloodedmama.github.io/AFE_exam/q07/dashboard</loc><priority>0.8</priority></url>' >> sitemap.xml
-        echo '</urlset>' >> sitemap.xml
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./${{ matrix.path }}
 
-    - name: Build Project
-      run: npm run build
+      - name: build to prod
+        run: npm run build:prod 
+        working-directory: ./${{ matrix.path }}
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./out
+      - name: deploy with james
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: Realease
+          folder: ${{ matrix.path }}/dist/${{ matrix.path }}
+          target-folder: ${{ matrix.path }}
+          token: ${{ secrets.GITHUB_TOKEN }}
