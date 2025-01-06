@@ -137,7 +137,6 @@ export const addItem = createAction('[Cart] Add Item', props<{ item: string }>()
 
 ---
 
-### Konklusion
-
+### Opsummering
 Responsivt design opnås gennem teknologier som **Flexbox**, **Grid**, og **Media Queries**, mens tredjepartsbiblioteker som **Tailwind**, **Angular Material** og **NgRx** gør udviklingen hurtigere og mere effektiv. Brug disse værktøjer til at skabe moderne, skalerbare og brugervenlige webapplikationer.
 

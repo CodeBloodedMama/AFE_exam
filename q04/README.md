@@ -147,11 +147,12 @@ Komponenten kan testes gennem `ComponentFixture`, som giver adgang til DOM-eleme
 
 CI-tests kan køres ved hjælp af **Karma** (test runner) og **Jasmine** (test framework). Karma konfigureres i `karma.conf.js`.
 ![Karma](image.png)
-
-På GitHub kan tests integreres i CI-processen, hvor resultaterne vises i pull requests.
+Man kan også integrere tests via workflow actions på github: 
+![Github test flow med ci](image-2.png)
 
 **Eksempel**:
-- **Test CI-output**: ![Karma test CI](KarmaTest.png)
+- **Test CI-output**: 
+
 - **Coverage-rapport**: 
 ![Coverage rapport Karma](image-1.png)
 
