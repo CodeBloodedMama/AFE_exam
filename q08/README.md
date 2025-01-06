@@ -65,10 +65,11 @@ Links hjælper søgemaskiner med at forstå kategorien og relevansen af din hjem
 - **Interne links:** Forbinder sider på din egen hjemmeside og forbedrer brugervenligheden.
 - **Eksterne links:** Links til og fra andre hjemmesider. Kvaliteten og relevansen af disse links har stor betydning.
 
+( affiliatelink til cloaking SEO)
+
 ### Ydeevne
 
 God ydeevne er essentiel for SEO. Det inkluderer hurtig indlæsningstid, interaktivitet og visuel stabilitet. Disse faktorer måles med Core Web Vitals.
-
 
 ## 3. Core Web Vitals
 
@@ -80,6 +81,7 @@ Core Web Vitals er tre vigtige målepunkter, der vurderer brugeroplevelsen:
 
 Disse målepunkter er vigtige for at sikre en god brugeroplevelse og forbedre SEO.
 
+![alt text](image-1.png)
 ![Alt text](image-3.png)
 
 inspect -> Lighthouse -> Analyze page load
