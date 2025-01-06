@@ -120,11 +120,6 @@ Reactive forms giver mulighed for at bruge funktioner til validering:
 ## 4. Testing Angular Apps
 
 
-
-
-
----
-
 Angular tilbyder testværktøjer i `@angular/core/testing`. Det centrale værktøj er **TestBed**, som bruges til at konfigurere og teste Angular-komponenter og services.
 
 ### **Nøglefunktioner:**
@@ -151,12 +146,14 @@ Komponenten kan testes gennem `ComponentFixture`, som giver adgang til DOM-eleme
 ## **CI-testing med Karma og Jasmine**
 
 CI-tests kan køres ved hjælp af **Karma** (test runner) og **Jasmine** (test framework). Karma konfigureres i `karma.conf.js`.
+![Karma](image.png)
 
 På GitHub kan tests integreres i CI-processen, hvor resultaterne vises i pull requests.
 
 **Eksempel**:
 - **Test CI-output**: ![Karma test CI](KarmaTest.png)
-- **Coverage-rapport**: ![Coverage](CoverageReport.png)
+- **Coverage-rapport**: 
+![Coverage rapport Karma](image-1.png)
 
 **GitHub Actions Workflow**:
 - Se [workflow-filen](./../.github/workflows/TestAndPushResults.yml).

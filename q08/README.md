@@ -100,6 +100,7 @@ Her ser vi på First Input Delay (FID). Dette er den tid, det tager for siden at
 Hvor stabil er siden? Her ser vi på Cumulative Layout Shift (CLS). Dette er mængden af uventet layoutskift af visuelt sideindhold. Dette sker, når siden flytter sig rundt, for eksempel når du er ved at klikke på en knap, og så dukker en annonce op, og du klikker på annoncen i stedet.
 
 Når CSS anvendes sent, for eksempel, vil siden først blive indlæst, og derefter vil CSS blive anvendt. Dette vil få siden til at hoppe rundt. Dette er ikke godt for brugeroplevelsen.
+![alt text](image-2.png)
 
 ## 4. Next.js og SEO 
 Next.js er et open-source webudviklingsframework til React. Det understøtter server-side rendering (SSR) og statisk generering, som er fordelagtige for SEO.
