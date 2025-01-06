@@ -6,7 +6,7 @@ on:
       - main
       - q10
     paths:
-      - 'q10/src/**'
+      - 'q10/carousel-project/src/**'
       - 'q10/gpt/**'
   pull_request:
     branches:
