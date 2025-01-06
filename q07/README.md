@@ -132,7 +132,7 @@ const login = (jwt: string) => {
 };
 ```
 
-### **Authorization**
+### **Authorization/adgangskontrol**
 - Begrænser adgang baseret på brugerroller.
 - Middleware eller server-side funktioner bruges til at beskytte sider.
 
