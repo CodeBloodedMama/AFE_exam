@@ -4,7 +4,7 @@
 - 1. giv en overordnet forklaring på hvad er NextJS
 - 2. forklar de forskellige komponent typer i next og hvordan man ka mixe dem
 - 3. forklar hvordan App Router bruges og hvordan det er forskelligt fra Pages router.
-
+- 4. forklar authentication og authorization i nextJS
 [npm run dev] i fitness-next
 
 ## 1. Next oversigt
@@ -22,7 +22,9 @@ Det er nemt at deploy appen til Vercel.
 1. **PageComponents**:  Disse findes i pages mappen. Hver JavaScript eller TypeScript fil i denne mappe svarer automatisk til en rute baseret på filnavnet. Sidekomponenter er indgangspunkter for forskellige stier i din applikation og kan anvende specielle livscyklusfunktioner til datahentning som ´getStaticProps´ og ´getServerSideProps´.
 2. **Almindelige React komponenter**: typiske React-komponenter, der anvendes til at opbygge brugergrænsefladen. De kan placeres hvor som helst i projektet, men ofte i en components mappe. De kan genbruges på tværs af forskellige sider og indlejres i page-komponenter.
 
-For at integrere disse komponenttyper, importerer man simpelthen de regulære React-komponenter ind i sidekomponenterne for at sammensætte komplekse layouts. Dette giver en høj grad af genbrugelighed og modularitet.
+opdelt i server eller klient komponenter.
+For at integrere disse komponenttyper, importerer man simpelthen de regulære React-komponenter ind i sidekomponenterne for at sammensætte komplekse layouts. 
+Dette giver en høj grad af genbrugelighed og modularitet.
 
 ### Eksempel på brug af komponenter i `fitness-next` appen
 
@@ -73,7 +75,59 @@ export default HomePage;
 - Klientkomponenter kan være alt fra interaktive brugergrænseflader, formularer, til dynamiske lister, der opdateres baseret på brugerinput.
 
 #### Hvordan blandes client og server komponenter
-Next.js tilbyder en hybrid tilgang til rendering, der tillader udviklere at vælge den mest effektive rendering metode for hver del af applikationen. Her er nogle måder at kombinere server- og klientkomponenter på:
+Next.js tilbyder en hybrid tilgang til rendering, der tillader udviklere at vælge hvordan komponenter skal renderes og brugesz
+# Mixing Server and Client Components in Next.js
+
+## Server Components
+- Renderes på serveren.
+- Bruges til datahåndtering og tunge beregninger.
+- Kan ikke bruge React-hooks som `useState` eller `useEffect`.
+
+## Client Components
+- Renderes i browseren.
+- Bruges til interaktivitet og dynamiske opdateringer.
+- Skal deklareres med `use client` i starten af filen.
+
+
+### Eksempel
+**Server Component (`layout.tsx`):**
+```tsx
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        <header>
+          <h1>Welcome to My App</h1>
+        </header>
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
+**Client Component (`Header.tsx`):**
+```tsx
+'use client';
+
+import { useState } from 'react';
+
+const Header = () => {
+  const [user, setUser] = useState(null);
+
+  return (
+    <header>
+      <h1>{user ? `Hello, ${user.name}` : 'Welcome!'}</h1>
+    </header>
+  );
+};
+
+export default Header;
+```
+**mixing af components**
+- Brug **Server Components** til datahåndtering og performance-optimering.
+- Brug **Client Components** til dynamiske elementer som knapper og formularer.
+- Overfør data fra Server Components til Client Components som props.
 
 
 ## 3. Forklar hvordan man bruger App router, og hvordan den adskiller sig fra Pages router
@@ -123,23 +177,85 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
 ```
 
-**øve**
 
-"Next.js er et React-baseret framework udviklet af Vercel, der gør det nemt at bygge server-renderede og statisk genererede webapplikationer. Vigtige funktioner inkluderer server-side rendering (SSR), static site generation (SSG), API routes, automatisk kode-splitning, og indbygget CSS og Sass support.
+### **Forskelle mellem App Router og Pages Router**
+| **Feature**          | **App Router**                          | **Pages Router**                       |
+|-----------------------|-----------------------------------------|----------------------------------------|
+| Routing              | Dynamisk routing med mapper            | Filbaseret routing                     |
+| Datahentning         | React Server Components                | `getServerSideProps`, `getStaticProps` |
+| Layout-deling        | Indbygget med `layout.tsx`             | Manuel opsætning                       |
+| Performance          | Bedre via streaming og Suspense        | Traditionel server-rendering           |
 
-I min fitness-next app har jeg struktureret projektet med en pages mappe til sider og en components mappe til genanvendelige komponenter. Jeg bruger også en styles mappe til CSS-filer.
+---
 
-Jeg har oprettet genanvendelige komponenter i components mappen og importerer dem i siderne i pages mappen. For eksempel har jeg en Header komponent, som jeg bruger i flere sider.
+**Ekstra**
+- **Lazy loading:** Komponenter loades kun, når de er nødvendige.
+- **Metadata:** `<Head>` bruges til at optimere SEO.
+- **Styling:** Understøtter CSS-moduler, Tailwind CSS og CSS-in-JS
 
-Jeg bruger getServerSideProps og getStaticProps til at hente data på serveren eller ved build-tid. Dette sikrer, at al nødvendig data er tilgængelig, før siden renderes.
+## 4. authentication og authorization i nextJS
+Authentication og authorization i Next.js håndteres typisk med **tredjeparts tjenester** som Firebase, NextAuth.js, eller ved hjælp af **JWT (JSON Web Tokens)** og sessioner. 
 
-Jeg har implementeret en Layout komponent i src/app/layout.tsx, som indeholder en header og en main sektion. Jeg bruger denne komponent til at wrappe indholdet af mine sider, hvilket sikrer et konsistent layout på tværs af applikationen.
+- **Authentication:** Validerer brugerens identitet og giver adgang til applikationen. Brugeren kan logge ind via en login-side, hvor deres token (f.eks. en JWT) gemmes i cookies eller `localStorage`.
 
-Jeg bruger App Router til at definere dynamiske ruter og layout-ruter. For eksempel har jeg en Layout komponent, som jeg bruger til at dele layout mellem forskellige sider.
+- **Authorization:** Sikrer, at brugere kun har adgang til de dele af applikationen, der matcher deres rolle eller rettigheder. Rollen kan defineres i JWT eller sessionen.
 
-For at forbedre SEO bruger jeg Next.js' indbyggede funktioner som server-side rendering (SSR) og static site generation (SSG). Jeg inkluderer også relevante metadata i head-sektionen af mine sider ved hjælp af Next.js' Head komponent.
+---
 
-For at optimere ydeevnen bruger jeg automatisk kode-splitning, lazy loading af komponenter, og ved at cache data effektivt. Jeg bruger også Next.js' indbyggede optimeringsfunktioner som Image komponenten til at optimere billeder.
+## **Hvordan det bruges i Next.js**
+
+### 1. **Authentication:**
+- Brugerens token verificeres ved login og gemmes.
+- Når brugeren genindlæser appen, hentes token fra cookies eller `localStorage` for at opretholde sessionen.
+
+**Eksempel på login med token:**
+```tsx
+const login = (jwt: string) => {
+  const decodedToken = decodeJWT(jwt);
+  localStorage.setItem('jwt', jwt);
+  setUser({ jwt, role: decodedToken.role });
+};
+```
+
+### 2. **Authorization:**
+- Rollen (`role`) fra token bruges til at beskytte sider og funktioner.
+- Middleware eller server-side funktioner (f.eks. `getServerSideProps`) sikrer, at kun autoriserede brugere har adgang.
+
+**Eksempel: Beskyttelse af sider:**
+```tsx
+if (user.role !== 'admin') {
+  return <p>Access Denied</p>;
+}
+```
+
+### 3. **Middleware til adgangskontrol:**
+Middleware kan beskytte ruter baseret på tokenets tilstedeværelse eller rolle.
+```tsx
+export function middleware(req) {
+  const token = req.cookies.get('jwt');
+  if (!token) return NextResponse.redirect('/login');
+  return NextResponse.next();
+}
+```
+
+---
+
+## **Hvorfor dette setup er effektivt**
+- **Sikkerhed:** Tokens verificeres på hver anmodning, hvilket reducerer risikoen for uautoriseret adgang.
+- **Skalerbarhed:** Rollebaseret adgang gør det nemt at håndtere flere brugergrupper.
+- **Enkelt setup:** Ved brug af tredjeparts tjenester eller middleware kræves minimal backend-konfiguration.
+
+---
+**Forbindelse til projektet**
+- **Authentication:** JWT gemmes i localStorage, og brugerens session bevares.
+- **Authorization:** Brugerroller (`accountType`) fra JWT bruges til adgangskontrol på sider og funktioner.
+
+
+ **Hvorfor JWT og React Context bruges i fitness-next**
+1. **Simpelt setup uden backend:** JWT giver mulighed for authentication og sessionstyring uden en backend.
+2. **Decentraliseret data:** JWT gemmes i localStorage og reducerer afhængigheden af servere.
+3. **Rollebaseret adgangskontrol:** `accountType` i JWT giver fleksibilitet til at beskytte specifikke sider.
+
+---
