@@ -1,102 +1,102 @@
 # Q06 Progressive Web Apps
 
-<!-- References to code will be made in markdown by using: See more in line XX in [name of snippet]("PATH_TO_FILE") -->
+<!-- Referencer til kode vil blive lavet i markdown ved at bruge: Se mere i linje XX i [navn på snippet]("PATH_TO_FILE") -->
 
-## Introduction - What is it about / what will you talk about
+**Spørgsmål:**
 
-**Questions:**
+- 1. Forklar konceptet bag PWA
+- 2. Vis hvordan man implementerer en PWA med Angular
 
-- Explain the concept of PWA
-- Show how to implement a PWA with Angular
+**ng serve**
 
-## What is A PWA
+## 1 Hvad er en PWA
 
-- **Progressive** - Works for every user, regardless of browser choice because it's built with progressive enhancement as a core tenet
+- **Progressiv** - Fungerer for alle brugere, uanset valg af browser, da den er bygget med progressiv forbedring som grundprincip.
 
-- **Responsive** - Fits any form factor: desktop, mobile, tablet, or whatever is next. See more responsive web design on: [q05](https://ninjaneer127.github.io/AFE-Eksamen/q05/)
+- **Responsiv** - Tilpasser sig enhver formfaktor: desktop, mobil, tablet eller fremtidige enheder. Se mere om responsivt design på: [q05](https://codebloodedmama.github.io/AFE-Eksamen/q05/).
 
-- **Connectivity** Independent - Enhanced with service workers to work offline or on
-low-quality networks. See [storage](#storage) for offline use
+- **Forbindelsesuafhængig** - Forbedret med service workers, så den virker offline eller på dårlige netværk. Se [lagring](#lagring) for offline brug.
 
-- **App-like** - Feels like an app to the user with app-style interactions and navigation because it's built on the app shell model.
+- **App-lignende** - Føles som en app for brugeren med app-stil interaktioner og navigation, fordi den er bygget på app shell-modellen.
 
-- **Fresh** - Always up-to-date thanks to the service worker update process.
+- **Opdateret** - Altid opdateret takket være service worker-opdateringsprocessen.
 
-- **Safe** - Served via HTTPS to prevent snooping and to ensure content hasn't been tampered with.
+- **Sikker** - Leveres via HTTPS for at forhindre aflytning og sikre, at indholdet ikke er blevet manipuleret.
 
-- **Discoverable** - Is identifiable as an "application" thanks to W3C manifest and
-service worker registration scope, allowing search engines to find it.
+- **Opdagelig** - Identificerbar som en "applikation" takket være W3C-manifest og service worker-registreringsomfang, hvilket gør det muligt for søgemaskiner at finde den.
 
-- **Re-engageable** - Makes re-engagement easy through features like push notifications.
+- **Genaktiverbar** - Gør det nemt at genaktivere via funktioner som push-notifikationer.
 
-- **Installable** - Allows users to "keep" apps they find most useful on their home screen without the hassle of an app store.
+- **Installerbar** - Giver brugere mulighed for at "beholde" de apps, de finder mest nyttige, på deres startskærm uden at skulle bruge en appbutik.
 
-- **Linkable** - Easily share via URL, does not require complex installation.
+- **Linkbar** - Nem at dele via URL uden behov for kompleks installation.
 
-## Storage
+## Lagring
 
-To make use of an app in offline mode, it is beneficial to store data in an offline storage, such as a local (storage) database.
+For at bruge en app i offline-tilstand er det nyttigt at gemme data i en offline-lagring, som f.eks. en lokal (storage) database.
 
-An example is provided where we display stored data, if any, until we load the data.
+Et eksempel er givet, hvor vi viser gemte data, hvis der er nogen, indtil vi indlæser dataene.
 
-You can see how we use this in line 5 of the [cards List template](./src/app/credit-card/credit-card-list/credit-card-list.component.html). Here, we fetch the data, set the loading state, and display the stored values.
+Du kan se, hvordan dette bruges i linje 5 af [cards List template](./src/app/credit-card/credit-card-list/credit-card-list.component.html). Her hentes data, sætter loading-tilstanden, og viser de gemte værdier.
 
-To understand how we store and retrieve the data, refer to the [cards List TS](./src/app/credit-card/credit-card-list/credit-card-list.component.ts) file.
+For at forstå, hvordan gemmes og hentes data, henvises til [cards List TS](./src/app/credit-card/credit-card-list/credit-card-list.component.ts)-filen.
 
-## Implementing PWA
-<!-- 
-see https://hackernoon.com/building-progressive-web-application-pwa-with-angular 
- -->
+## 2 Implementering af PWA
+<!-- Se https://hackernoon.com/building-progressive-web-application-pwa-with-angular -->
 
-We have included the installation and online status inside the Footer: ![Connections](images/Connectionstatus.png)
+Vi har inkluderet installation og online status i bunden (footer): ![Forbindelser](images/Connectionstatus.png)
 
-### Make it installable
+### Gør den installerbar
 
-Run `ng add @angular/pwd` to add the library to set up the Angular service worker. This updates the following files:
+Kør `ng add @angular/pwd` for at tilføje biblioteket og konfigurere Angular service worker. Dette opdaterer følgende filer:
 
-- package.json: The `@angular/service-worker` library was added in [line 25](./package.json).
-- src/app/app.module.ts: The service worker configuration was added. See line 33-39 for [Service worker registration](./src/app/app.module.ts)
-- src/index.html: Manifest file configuration and theme color was added [line 18](./src/index.html)
+- package.json: Biblioteket `@angular/service-worker` blev tilføjet i [linje 25](./package.json).
+- src/app/app.module.ts: Konfiguration af service worker blev tilføjet. Se linje 33-39 for [Service worker registrering](./src/app/app.module.ts).
+- src/index.html: Manifestfil-konfiguration og tema farve blev tilføjet [linje 18](./src/index.html).
 
-### Check online status
+### Tjek online status
 
-An important thing is the "fresh" data vibe. This is done by using the window.navigator.online, as seen in lines 45-48 of the [code](./src/app/footer/footer.component.ts).
+En vigtig ting er at sikre "frisk" data. Dette gøres ved at bruge `window.navigator.online`, som ses i linje 45-48 af [koden](./src/app/footer/footer.component.ts).
 
-We also add an event listener to detect changes, as shown in [line 25](./src/app/footer/footer.component.ts).
+Jeg tilføjer også en event listener til at detektere ændringer, som vist i [linje 25](./src/app/footer/footer.component.ts).
 
-### Update App
+### Opdater App
 
-When the app has been "downloaded", an update notfication should be implemented.
-This can be seen in [lines 28-50](./src/app/footer/footer.component.ts)
-This uses the Service Worker Update from angular to update the version of the app.
+Når appen er "downloadet", skal en opdateringsnotifikation implementeres.
+Dette kan ses i [linje 28-50](./src/app/footer/footer.component.ts). Her bruges Angulars Service Worker Update til at opdatere appens version.
 
-We then make a popup dialog as seen here:
-![update](images/update.png)
-The implemenation of the dialog can be seen in [template lines 42-49](./src/app/footer/footer.component.html).  
+Vi laver derefter en popup-dialog, som ses her:
+![opdatering](images/update.png)
+Implementeringen af dialogen kan ses i [template linje 42-49](./src/app/footer/footer.component.html).
 
-### Different Devices
+### Forskellige Enheder - cross platform and devices
 
-When making a progressive web app, there are some things we can't just make usable for every type of device, such as how to download, whether it's from an Android/Chromium device or an Apple device.
+Ved opbygning af en progressiv web app er der nogle ting, der ikke automatisk fungerer for alle typer enheder, f.eks. hvordan man downloader fra en Android/Chromium-enhed versus en Apple-enhed.
 
-When we load the Update Module, we check for the **platform** type in the `loadModalPwa()` function.
+Når vi indlæser opdateringsmodulet, tjekker vi platformtypen i funktionen `loadModalPwa()`.
 
-We also do this in the template, where we look at the `modalPwaPlatform` field to differentiate between different "divs".
+Dette gøres også i templaten, hvor vi ser på feltet `modalPwaPlatform` for at differentiere mellem forskellige "divs".
 
-See [template lines 52-70](./src/app/footer/footer.component.html).  
+Se [template linje 52-70](./src/app/footer/footer.component.html).
 
-### Additional information about Service Workers
+### Yderligere information om Service Workers
 
-A service worker is a web worker that implements a programmable network proxy that can respond to web/HTTP requests of the main document. It is able to check the availability of a remote server and to cache content when that server is available, and serve that content later to the document. Service workers, like any other web workers, work separately from the main document context. Service workers can handle push notifications and synchronize data in the background, cache or retrieve resource requests, intercept network requests and receive centralized updates independently of the document that registered them, even when that document is not loaded.
+En service worker er en web worker, der implementerer en programmerbar netværksproxy, der kan reagere på web-/HTTP-anmodninger fra hoveddokumentet. Den kan tjekke tilgængeligheden af en fjernserver, cache indhold og levere dette indhold senere.
 
-Service workers go through a three-step lifecycle:
- - Registration
- - Installation
- - Activation. 
- 
- Registration involves telling the browser the location of the service worker in preparation for installation. 
- 
- Installation occurs when there is no service worker installed in the browser for the web app, or if there is an update to the service worker.
- 
-  Activation occurs when all of the PWA's pages are closed, so that there is no conflict between the previous version and the updated one. The lifecycle also helps maintain consistency when switching among versions of service worker since only a single service worker can be active for a domain.
+Service workers går gennem en tre-trins livscyklus:
+- Registrering
+- Installation
+- Aktivering
 
-Service worker in action - inspector -> application -> service workers
+- **Registrering:** Informerer browseren om service workerens placering for at forberede installationen.
+- **Installation:** Finder sted, når der ikke er en service worker installeret, eller hvis der er en opdatering.
+- **Aktivering:** Finder sted, når alle PWA'ens sider er lukket, så der ikke er konflikter mellem tidligere og opdaterede versioner.
+
+Service workers bruges til:
+- Håndtering af push-notifikationer
+- Synkronisering af data i baggrunden
+- Cachelagring eller hentning af ressourceanmodninger
+- Aflæse netværksanmodninger
+
+For at se en service worker i aktion: 
+Åbn browserens inspector -> Gå til Application -> Vælg Service Workers.
