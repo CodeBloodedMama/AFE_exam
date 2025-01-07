@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/AFE-Eksamen/q09/reactgraphql/static/css/main.92337f2c.css",
-    "main.js": "/AFE-Eksamen/q09/reactgraphql/static/js/main.e2c1abc7.js",
+    "main.js": "/AFE-Eksamen/q09/reactgraphql/static/js/main.0425b0f9.js",
     "static/js/453.3a1c5691.chunk.js": "/AFE-Eksamen/q09/reactgraphql/static/js/453.3a1c5691.chunk.js",
     "index.html": "/AFE-Eksamen/q09/reactgraphql/index.html",
     "main.92337f2c.css.map": "/AFE-Eksamen/q09/reactgraphql/static/css/main.92337f2c.css.map",
-    "main.e2c1abc7.js.map": "/AFE-Eksamen/q09/reactgraphql/static/js/main.e2c1abc7.js.map",
+    "main.0425b0f9.js.map": "/AFE-Eksamen/q09/reactgraphql/static/js/main.0425b0f9.js.map",
     "453.3a1c5691.chunk.js.map": "/AFE-Eksamen/q09/reactgraphql/static/js/453.3a1c5691.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.92337f2c.css",
-    "static/js/main.e2c1abc7.js"
+    "static/js/main.0425b0f9.js"
   ]
 }
