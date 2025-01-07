@@ -60,7 +60,7 @@ Subscriptionen kan bruges til at afbryde forbindelsen og forhindre hukommelsesl�
 #### **3. RxJs Operators**
 Operators er funktioner, der manipulerer datastrømme. De bruges enten til at oprette nye observables (**creation operators**) eller ændre eksisterende (**pipeable operators**).
 
-- **Eksempel fra handIn**: Brug af `map` til at fordoble værdierne i en liste:
+- **Eksempel**: Brug af `map` til at fordoble værdierne i en liste:
   ```typescript
   const array = [10, 20, 30];
   const result = from(array).pipe(map(x => x * 2));
@@ -68,9 +68,9 @@ Operators er funktioner, der manipulerer datastrømme. De bruges enten til at op
   ```
 - I projektet kunne `map` bruges til at formatere transaktioner, før de præsenteres.
 
-- der er 4 hovedtyper: transformation (indeholder map og filter), kombination(merge, concat,combineLatest),
-utility(tap til sideeffekter uden ar ændre data, take som begrænser antal værdier til en observable og debounceTime som ignorere værdier der kommer huerift efter hiananden), 
-samt error handling ( catchError og retry)
+- der er 4 hovedtyper: **transformation** (indeholder map og filter), **kombination**(merge, concat,combineLatest),
+**utility**(tap til sideeffekter uden ar ændre data, take som begrænser antal værdier til en observable og debounceTime som ignorere værdier der kommer huerift efter hiananden), 
+samt **error handling** ( catchError og retry)
 
 ---
 
