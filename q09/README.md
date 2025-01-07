@@ -8,13 +8,19 @@
 3. Vis hvordan man tilgår et GraphQL Web API fra React.
 4. Vis hvordan man tilgår et GraphQL Web API fra Next.js, og forklar hvorfor det er anderledes end at gøre det samme i React.
 
+
+
 ## 1. Hvad er GraphQL
 
-GraphQL er et forespørgselssprog designet til at gøre kommunikationen mellem klienter og servere mere effektiv og fleksibel. Udviklet af Facebook i 2012, det tillader klienter at anmode om præcis de data, de har brug for, intet mere og intet mindre.
+GraphQL er et forespørgselssprog designet til at gøre kommunikationen mellem klienter og servere mere effektiv og fleksibel. 
+Udviklet af Facebook i 2012, det tillader klienter at anmode om præcis de data, de har brug for, intet mere og intet mindre, efter indførslen af en neverending-scroll home page med mange mange mange fetch calls i traditionelle REST API'er og for meget eller for lidt data. 
+
+
+Dette løste de med graphQL med **reeduceret forespørgsler**, **fleksibel og specifikke forespørgsler**, selvdokumenteret API'er samt med bedre håndtering af data.
+
 Strukturen af en GraphQL-forespørgsel er tredelt. Den indeholder tre felter: 
-- Dokument, 
-- Variabler og 
-- Meta-Information. 
+- Dokument,  Variabler og  Meta-Information. 
+
 Der er tre forskellige typer operationer:
 - Query (simpel læsning), 
 - Mutation (skrivning efterfulgt af en læsning) og 
@@ -26,7 +32,7 @@ Der er tre forskellige typer operationer:
 - **Effektiv datahentning**: det eliminerer både overfetching og underfetching af data. Dette betyder, at en mobil app kan begrænse mængden af data, der overføres over netværket, hvilket er kritisk for ydeevnen, især på langsomme netværksforbindelser
 - **Single endpoint**: I modsætning til REST, som bruger multiple endpoints, håndterer GraphQL alle forespørgsler gennem et enkelt endpoint. Dette simplificerer logistikken betydeligt for API-management
 - **stærk type definition**: GraphQL bruger et skema, der definerer, hvordan dataene skal se ud. Dette skema er både en vejledning for udviklere og en kontrakt mellem serveren og klienten, som sikrer, at dataene er præcise og konsistente.
-- **introspection**: tillader graphQL API'er at blive selvbeskrivende. Klienter kan forespørge et GraphQL API om, hvilke operationer det understøtter, hvilket er en stor fordel for udviklerværktøjer og automatiseret dokumentation.
+- **introspection: selvbeskrivende APIEr**: tillader graphQL API'er at blive selvbeskrivende. Klienter kan forespørge et GraphQL API om, hvilke operationer det understøtter, hvilket er en stor fordel for udviklerværktøjer og automatiseret dokumentation.
 
 - **schema**: 
 ![GraphQL api](./images/GraphQL.png)
@@ -41,7 +47,7 @@ Eksempel på et schema:
 type Character {
     id: ID!
     name: String!
-    appearsIn: [Episode!]!
+    appearsIn: [Episode!]! // ! = not nullable
     friends: [Character]
 }
 
@@ -76,7 +82,6 @@ Et eksempel på en GraphQL-forespørgsel og svar kan ses i følgende snippets:
 }
 
 ```
-
 I denne forespørgsel beder vi om navnet på helten og navnene på heltens venner. Svaret vil se sådan ud:
 
 ```javascript
@@ -129,11 +134,10 @@ Medmindre der opstår en fejl med anmodningen. Så vil svaret se sådan ud:
 Med GraphQL får vi kun præcis det, vi beder om og intet mere. Dette betyder, at vi kan undgå overfetching og underfetching og ikke behøver at lave flere anmodninger for at få de data, vi har brug for, eller begynde at filtrere dataene på klientsiden.
 
 
-
 ## 2. fordele og ulemper ved REST vs GraphQL
 
 ### fordele
-Fleksible forespørgsler tillader at man kan hente specifikke resoujrcer i en enkelt forespørgsel, hvilket er minder sandsynligt i REST.
+Fleksible forespørgsler tillader at man kan hente specifikke resourcer i en enkelt forespørgsel, hvilket er minder sandsynligt i REST.
 - **Præcis datahentning**: Undgå overfetching og underfetching ved at anmode om præcis de data, du har brug for.
 - **Enkelt endpoint**: Alle forespørgsler håndteres gennem et enkelt endpoint, hvilket simplificerer API-management.
 - **Stærk typning**: GraphQL bruger et skema, der definerer, hvordan dataene skal se ud, hvilket sikrer præcise og konsistente data.
@@ -153,11 +157,13 @@ Fleksible forespørgsler tillader at man kan hente specifikke resoujrcer i en en
 
 ## 3. GraphQL in React
 
-GraphQL adskiller sig i React sammenlignet med Next.js, da man ikke har en serverkomponent. Du har kun klientkomponenter.
+GraphQL adskiller sig i React sammenlignet med Next.js, da man **ikke har en serverkomponent**. Man
+ har kun klientkomponenter.
 
-Tilgangen er stadig den samme som i NextJS ( se næste kapitel) Vi opretter en ny Apollo Client og bruger provider som en wrapper til appen. Se mere på linje 21 i[index.js](./reactgraphql/src/index.js)
+Tilgangen er stadig den samme som i NextJS ( se næste kapitel) 
+Der oprettes en ny Apollo Client og bruger provider som en wrapper til appen. Se mere på linje 21 i[index.js](./reactgraphql/src/index.js)
 
-Derefter opretter vi nogle klientkomponenter, der bruger Apollo Client. Se mere i [line 16 & 18](./reactgraphql/src/App.js).
+Derefter oprettes nogle klientkomponenter, der bruger Apollo Client. Se mere i [line 16 & 18](./reactgraphql/src/App.js).
 
 Funktionaliteten af React-appen er ret simpel. Den har en dropdown-menu, der får alle de forskellige klasser i Dungeons and Dragons. Når du vælger en klasse, vil den vise de spells, som klassen kan bruge. Dropdown-menuen kan ses i linje 16-22 i [App.js](./reactgraphql/src/components/Classes.js)
 
@@ -190,7 +196,7 @@ type Query {
 }
 ```
 
-## 4. GraphQL i Next.js 'npm run dev'
+## 4. GraphQL i Next.js 'npm start'
 
 ### Apollo Client
 Apollo Client er et state management bibliotek for JavaScript, der gør det muligt at administrere både lokale og eksterne data med GraphQL. 

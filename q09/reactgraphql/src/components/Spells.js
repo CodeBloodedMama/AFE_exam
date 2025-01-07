@@ -24,7 +24,6 @@ const query = gql`
 
 
 // Definer en React-komponent, der bruger Apollo Client til at udføre forespørgslen
-
 export default function Spells({ classIndex }) {
   // små bogstaver
   const selectedClass = classIndex.toLowerCase();

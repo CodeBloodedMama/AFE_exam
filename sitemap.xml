@@ -1,117 +1,109 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <!-- Main Pages -->
-    <url>
-        <loc>https://codebloodedmama.github.io/AFE_exam/</loc>
-        <lastmod>2024-01-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>1.0</priority>
-    </url>
-    <url>
-        <loc>https://codebloodedmama.github.io/AFE_exam/q01/</loc>
-        <lastmod>2024-01-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://codebloodedmama.github.io/AFE_exam/q02/</loc>
-        <lastmod>2024-01-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://codebloodedmama.github.io/AFE_exam/q03/</loc>
-        <lastmod>2024-01-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <!-- Question 3 Sub-pages -->
-    <url>
-        <loc>https://codebloodedmama.github.io/AFE_exam/q03/Lazy</loc>
-        <lastmod>2024-01-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://codebloodedmama.github.io/AFE_exam/q03/Lazy/Blue</loc>
-        <lastmod>2024-01-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-    </url>
-
-    <!-- Question 4 -->
-    <url>
-        <loc>https://codebloodedmama.github.io/AFE_exam/q04/</loc>
-        <lastmod>2024-01-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <!-- Question 5 -->
-    <url>
-        <loc>https://codebloodedmama.github.io/AFE_exam/q05/</loc>
-        <lastmod>2024-01-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <!-- Question 6 -->
-    <url>
-        <loc>https://codebloodedmama.github.io/AFE_exam/q06/</loc>
-        <lastmod>2024-01-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <!-- Additional URLs for Question 6 - Progressive Web Apps -->
-    <url>
-        <loc>https://codebloodedmama.github.io/AFE_exam/q06/about</loc>
-        <lastmod>2024-01-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://codebloodedmama.github.io/AFE_exam/q06/creditcard</loc>
-        <lastmod>2024-01-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://codebloodedmama.github.io/AFE_exam/q06/creditcard/details/:card_number</loc>
-        <lastmod>2024-01-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-    </url>
-
-    <!-- Question 7 -->
-    <url>
-        <loc>https://codebloodedmama.github.io/AFE_exam/q07/</loc>
-        <lastmod>2024-01-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <!-- Question 8 -->
-    <url>
-        <loc>https://codebloodedmama.github.io/AFE_exam/q08/</loc>
-        <lastmod>2024-01-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <!-- Question 9 -->
-    <url>
-        <loc>https://codebloodedmama.github.io/AFE_exam/q09/</loc>
-        <lastmod>2024-01-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <!-- Question 10-->
-    <url>
-        <loc>https://codebloodedmama.github.io/AFE_exam/q10/</loc>
-        <lastmod>2024-01-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!--  created with Free Online Sitemap Generator www.xml-sitemaps.com  -->
+<url>
+<loc>https://codebloodedmama.github.io/AFE_exam/</loc>
+<lastmod>2025-01-06T23:38:41+00:00</lastmod>
+<priority>1.00</priority>
+</url>
+<url>
+<loc>https://codebloodedmama.github.io/AFE_exam/q01/</loc>
+<lastmod>2025-01-06T23:38:41+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://codebloodedmama.github.io/AFE_exam/q02/</loc>
+<lastmod>2025-01-06T23:38:41+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://codebloodedmama.github.io/AFE_exam/q03/</loc>
+<lastmod>2025-01-06T23:38:41+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://codebloodedmama.github.io/AFE_exam/q04/</loc>
+<lastmod>2025-01-06T23:38:41+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://codebloodedmama.github.io/AFE_exam/q05/</loc>
+<lastmod>2025-01-06T23:38:41+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://codebloodedmama.github.io/AFE_exam/q06/</loc>
+<lastmod>2025-01-06T23:38:41+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://codebloodedmama.github.io/AFE_exam/q07/</loc>
+<lastmod>2025-01-06T23:38:41+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://codebloodedmama.github.io/AFE_exam/q08/</loc>
+<lastmod>2025-01-06T23:38:41+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://codebloodedmama.github.io/AFE_exam/q09/</loc>
+<lastmod>2025-01-06T23:38:41+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://codebloodedmama.github.io/AFE_exam/q10/</loc>
+<lastmod>2025-01-06T23:38:41+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://codebloodedmama.github.io/AFE_exam/q01/src/app/example-component/example-component.component.html</loc>
+<lastmod>2025-01-06T23:38:41+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>https://codebloodedmama.github.io/AFE_exam/q03/src/app/pick/pick.component.html</loc>
+<lastmod>2025-01-06T23:38:41+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>https://codebloodedmama.github.io/AFE_exam/q03/src/app/number/number.component.html</loc>
+<lastmod>2025-01-06T23:38:41+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>https://codebloodedmama.github.io/AFE_exam/q04/src/app/template-driven/template-driven.component.html</loc>
+<lastmod>2025-01-06T23:38:41+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>https://codebloodedmama.github.io/AFE_exam/q05/src/app/tailwind/tailwind.component.html</loc>
+<lastmod>2025-01-06T23:38:41+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>https://codebloodedmama.github.io/AFE_exam/q05/src/app/material/material.component.html</loc>
+<lastmod>2025-01-06T23:38:41+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>https://codebloodedmama.github.io/AFE_exam/q06/src/app/credit-card/credit-card-list/credit-card-list.component.html</loc>
+<lastmod>2025-01-06T23:38:41+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>https://codebloodedmama.github.io/AFE_exam/q06/src/index.html</loc>
+<lastmod>2025-01-06T23:38:41+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>https://codebloodedmama.github.io/AFE_exam/q06/src/app/footer/footer.component.html</loc>
+<lastmod>2025-01-06T23:38:41+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>https://codebloodedmama.github.io/AFE_exam/q03/src/index.html</loc>
+<lastmod>2025-01-06T23:38:41+00:00</lastmod>
+<priority>0.64</priority>
+</url>
 </urlset>

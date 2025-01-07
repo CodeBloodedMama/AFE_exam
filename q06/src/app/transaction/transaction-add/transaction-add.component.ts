@@ -30,13 +30,13 @@ export class TransactionAddComponent implements OnInit {
     private transactionService: TransactionService,
     private creditCardService: CreditCardService
   ) {  }
-  
+  // ngOninit() is a lifecyclehook that is called after Angular has initialized all data-bound properties of a directive.
   ngOnInit(): void {
     this.creditCardService.getCreditCards().subscribe((response) => {
       this.creditCards = response;
     });
   }
-
+// formToTransaction() is a function that takes a form and returns a transaction object.
   formToTransaction(form: FormGroup): Transaction {
     const transaction: Transaction = {
       credit_card:
@@ -59,7 +59,8 @@ export class TransactionAddComponent implements OnInit {
 
     return transaction;
   }
-
+  // onSubmit() is a function that is called when the form is submitted.
+  // its a lifehook cycle called after Angular has initialized all data-bound properties of a directive.
   onSubmit() {
     console.log('Transaction form submitted:', this.transactionForm)
     if (this.transactionForm.valid) {
