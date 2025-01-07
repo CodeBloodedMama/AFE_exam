@@ -10,7 +10,6 @@ on:
       - 'q03/**'
       - 'q04/**'
       - 'q05/**'
-      - 'q06/**'
 
     types: [opened, synchronize, reopened]
 
@@ -19,7 +18,7 @@ jobs:
       strategy:
         fail-fast: false
         matrix:
-          path: [./q01, ./q02, ./q03, ./q04, ./q05, ./q06]
+          path: [./q01, ./q02, ./q03, ./q04, ./q05]
       runs-on: ubuntu-latest
       name:  ${{ matrix.path }}
       steps:

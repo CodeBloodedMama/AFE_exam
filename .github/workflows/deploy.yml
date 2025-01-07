@@ -10,7 +10,7 @@ on:
       - 'q03/**'
       - 'q04/**'
       - 'q05/**'
-      - 'q06/**'
+    
 
   workflow_dispatch:
 
@@ -22,7 +22,7 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-          path: [q01, q02, q03, q04, q05, q06]
+          path: [q01, q02, q03, q04, q05]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
